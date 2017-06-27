@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets_2/img/apple-icon.png"/>
+    <link rel="icon" type="image/png" href="../assets_2/img/favicon.png"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Welcome</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'accounts/assets_2/css/bootstrap.min.css' %}" rel="stylesheet"/>
+
+    <!--  Material accounts CSS   -->
+    <link href="{% static 'accounts/assets_2/css/material-dashboard.css' %}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static 'accounts/assets_2/css/demo.css' %}" rel="stylesheet"/>
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+          type='text/css'>
+    <script src="{% static 'accounts/assets_2/js/jquery-3.1.0.min.js' %}" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="sidebar" data-color="blue" data-image="{% static 'home/assets/img/sidebar-1.jpg' %}">
+
+
+        <div class="logo">
+            <a href="/home" class="simple-text">
+               <strong> ALLSafe Security Club </strong>
+            </a>
+        </div>
+
+        <div class="sidebar-wrapper">
+            <ul class="nav" id="dash">
+                <li class="{{dash}}" id="l1">
+
+                    <a href="/connection/accounts">
+                        <i class="fa fa-bar-chart"></i>
+                        <p id="p1">Tidings</p>
+                    </a>
+                </li>
+
+                <li id="l2" class="{{profile}}">
+                    <a href="/account/myprofile">
+                        <i class="fa fa-user-secret"></i>
+                        <p id="p2">My Profile</p>
+                    </a>
+                </li>
+                <li id="l3" class="{{library}}">
+                    <a href="/connection/library">
+                        <i class="fa fa-book"></i>
+                        <p id="p3">Our Library</p>
+                    </a>
+                </li>
+                <li id="l4" class="{{myarticle}}">
+                    <a href="/connection/myarticles">
+                        <i class="fa fa-file-text-o"></i>
+                        <p id="p4">My Articles</p>
+                    </a>
+                </li>
+                <li id="l5" class="{{write}}">
+                    <a href="/connection/write">
+                        <i class="fa fa-pencil"></i>
+                        <p id="p5">Write Article</p>
+                    </a>
+                </li>
+                <li id="l6" class="{{tasks}}">
+                    <a href="/connection/tasks">
+                        <i class="fa fa-tasks "></i>
+                        <p id="p6">To Do</p>
+                    </a>
+                </li>
+                <li id="l7" class="{{activity}}">
+                    <a href="/connection/activities">
+                        <i class="fa fa-battery-4 "></i>
+                        <p id="p8">My activities</p>
+                    </a>
+                </li>
+                {% if user.is_staff %}
+                <li class="{{admin}}" id="l8">
+
+                    <a href="/connection/administration">
+                        <i class="fa fa-accounts"></i>
+                        <p id="p8"><strong>Administration</strong></p>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell"></i>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Maroon said no no </a></li>
+                                <li><a href="#">Where is the beach?</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a hre="#"> <i class="fa fa-inbox"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Welcome &nbsp; {{request.user.username}}! &nbsp;
+                                <i class="fa fa-user"></i>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/connection/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {% if library == "active" %}
+
+                    <form class="navbar-form navbar-right" METHOD="get" action=".">
+                        <div class="form-group  is-empty">
+                            <input type="text" name="search" class="form-control" placeholder="Search">
+                            <span class="material-input"></span>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+
+            {% if doneUpload %}
+            <h4 class="control-label alert alert-success">Your file has been successfully uploaded , thank you
+                {{user.first_name}}!</h4>
+            {% elif doneUpload == False %}
+
+            <h4 class="control-label alert alert-danger">ERROR ! you did something wrong, believe me
+                {{user.first_name}}</h4>
+            {% endif %}
+            {% if dash == "active" %}
+
+
+            <div class="container-fluid">
+                {% for n in news %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#7189EE">
+                                <h4 class="title">{{n.object}}</h4>
+                                <p class="category">{{n.sub_object}}</p>
+                            </div>
+                            <div class="card-content">
+                                <div id="typography">
+
+                                    <h2>{{n.title}}</h2>
+
+                                    <p> {{n.text}} </p>
+                                    <small> {{n.user.user.first_name}} {{n.user.user.last_name}}: {{n.date}}</small>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+            {% elif library == "active" %}
+
+
+            <div class="container-fluid">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" style="background-color:#7189EE">
+                            <h4 class="title">AllSafe Library</h4>
+                            <p class="category">Here our works, you will find many useful documents!</p>
+
+
+                        </div>
+                        <div class="card-content table-responsive">
+                            <div align="center">
+                                {% for categ in categories %}
+                                <a href="?cat={{categ.category_name}}">
+                                    <button class="btn" style="background-color : #07d684"><i class="material-icons">search</i>{{categ.category_name}}
+                                    </button>
+                                </a>
+                                {% endfor %}
+                                <button class="btn btn-warning" id="addFile">Add Document/File</button>
+                            </div>
+                            <table class="table">
+                                <thead class="text-primary">
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Uploaded at</th>
+                                <th>Link</th>
+                                </thead>
+                                <tbody>
+                                {% for document in documents %}
+                                <tr>
+                                    <td>{{document.document_name}}</td>
+                                    <td>{{document.document_description}}</td>
+                                    <td>{{document.document_category}}</td>
+                                    <td>{{document.uploaded_at}}</td>
+                                    <td><a href="{{document.document_file.url}}">Download</a></td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+
+						$(document).ready(function(){
+  						  $("#addFile").click(function(){
+
+								 $("#myModal").modal();
+								 $("#myModal").modal({backdrop: true});
+
+
+    							});
+							});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
+
+            </div>
+            {% elif profile == "active" %}
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#7189EE">
+                                <h4 class="title">Edit Profile</h4>
+                                <p class="category">Complete your profile</p>
+                            </div>
+                            <div class="card-content">
+                                <form method="POST" action=".">
+                                    {% csrf_token %}
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Gender</label>
+                                                <select name="gender" class="form-control">
+                                                    {% if member.gender == 'M' %}
+                                                    <option selected="true">M</option>
+                                                    <option>Ms</option>
+                                                    {% else %}
+                                                    <option>M</option>
+                                                    <option selected="true">Ms</option>
+                                                    {% endif %}
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Update slogan (or a testimonial)</label>
+                                                <input value="{{member.status}}" name="slogan" type="text"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label"> <i class="fa fa-facebook"></i></label>
+                                                <input value="{{member.facebook}}" name="facebook" type="text"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label"> <i class="fa fa-linkedin"></i></label>
+                                                <input value="{{member.linkedin}}" name="linkedin" type="text"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label class="control-label">Birthday</label>
+                                            <input value='{{member.birthday|date:"Y-m-d"}}' name="date" type="text"
+                                                   class="form-control" placeholder="{{today}}">
+                                        </div>
+
+                                    </div>
+
+
+                                    <button type="submit" class="btn  pull-right" style="background-color : #07d684">
+                                        Update Profile
+                                    </button>
+                                    <div class="clearfix">
+                                        <a href="/admin/password_change/"><u>Change password</u></a>
+                                        <br><br>
+                                        <p> PS :To change your picture, contact the webamdin.
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="{{member.avatar.url}}"/>
+                                </a>
+                            </div>
+
+                            <div class="content">
+                                <h6 class="category text-gray">{{member.function}}</h6>
+                                <h4 class="card-title">{{current_user.first_name}} {{current_user.last_name}}</h4>
+                                <p class="card-content">
+                                    {{member.status}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% elif write == "active" %}
+
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    {% if doneWrite == True %}
+                <div class="col-md-10 alert alert-success">
+                   Your article is submitted successfully! Thank you {{member}}.
+                </div>
+                {% elif doneWrite == False %}
+                <div class="col-md-10 alert alert-danger">
+                    Something gone wrong, try again please {{member}}.
+                </div>
+                {% endif %}
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#7189EE">
+                                <h4 class="title">Edit Article</h4>
+                                <p class="category">This article will be verified and posted in to our magazine</p>
+                            </div>
+                            <div class="card-content">
+                                <form method="post" action="." enctype="multipart/form-data">
+
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Title</label>
+                                                <input name="title" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Subtitle</label>
+                                                <input name="subtitle" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Text content</label>
+                                                <textarea name="text" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" align="center">
+                                       {{form}}
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary pull-right"
+                                            style="background-color : #07d684">Submit article
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% elif tasks == "active" %}
+
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header" style="background-color:#7189EE">
+                        <h4 class="title">Notifications</h4>
+                        <p class="category"> Hello hacker ! </p>
+                    </div>
+                    <div class="card-content">
+                        <div class="places-buttons">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-md-3">
+                                        <a href="?state=todo">
+                                            <button class="btn btn-info btn-block">To Do</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="?state=inprogress">
+                                            <button class="btn btn-warning btn-block">In progress</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="?state=done">
+                                            <button class="btn btn-success btn-block">Done</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="?state=outdate">
+                                            <button class="btn btn-danger btn-block">Out dated</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h5>{{how_many}} Tasks</h5>
+                        {% for task in tasks_list %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if state == "inprogress" %}
+                                <div class="alert alert-warning alert-with-icon" data-notify="container">
+
+                                    <i data-notify="icon" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                    <h3>{{task.tsk_title|title}}</h3>
+                                    <h4 class="title">{{task.tsk_description}}</h4>
+
+                                    <br>
+                                    <small>You received a task in: {{task.tsk_start_date}} <br>
+                                        Deadline : {{task.tsk_deadline}} <br>
+                                        Remaining time <strong>{{ today.date|timesince:task.tsk_deadline.date}}</strong>
+                                    </small>
+                                </div>
+                                {% elif state == "done" %}
+                                <div class="alert alert-success alert-with-icon" data-notify="container">
+
+                                    <i data-notify="icon" class="fa fa-check-square-o"></i>
+                                    <h3>{{task.tsk_title|title}}</h3>
+                                    <h4 class="title">{{task.tsk_description}}</h4>
+
+                                    <br>
+                                    <small>You received a task in: {{task.tsk_start_date}} <br>
+                                        Task done in : {{task.tsk_done_date}} <br>
+                                    </small>
+                                </div>
+
+                                {% elif state == "outdate" %}
+                                <div class="alert alert-danger alert-with-icon" data-notify="container">
+
+                                    <i data-notify="icon" class="fa fa-bug"></i>
+                                    <h3>{{task.tsk_title|title}}</h3>
+                                    <h4 class="title">{{task.tsk_description}}</h4>
+
+                                    <small>The deadline was : {{task.tsk_deadline}}
+                                    </small>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-info alert-with-icon" data-notify="container">
+
+
+                                    <i data-notify="icon" class="fa fa-bell"></i>
+                                    <h3>{{task.tsk_title|title}}</h3>
+                                    <h4 class="title">{{task.tsk_description}}</h4>
+
+                                    <br>
+                                    <small>You received a task in: {{task.tsk_start_date}} <br>
+                                        Deadline : {{task.tsk_deadline}} <br>
+                                        Remaining time <strong>{{ today.date|timesince:task.tsk_deadline.date}}</strong>
+                                    </small>
+                                    <div>
+                                        <a href="?id={{task.pk}}">
+                                            <button class="btn" style="background-color: #e7eef1 ; color : #055876">
+                                                Pick it
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
+                        {% endfor %}
+
+                        <br>
+                        <br>
+
+
+                    </div>
+                </div>
+            </div>
+
+            {% elif admin == "active" %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#7189EE">
+                                <h4 class="title">Publish </h4>
+                                <p class="category">These updates will appear in the accounts menu for all the
+                                    members
+                                    to see</p>
+                            </div>
+                            <div class="card-content">
+                                <form method="post" action="." enctype="multipart/form-data">
+
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Subject</label>
+                                                <input name="subject" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Description of subject</label>
+                                                <input name="description" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Title</label>
+                                                <input name="title" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Text content</label>
+                                                <textarea name="text" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-primary pull-right"
+                                            style="background-color : #07d684">Publish
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% elif myarticle == "active" %}
+
+            <div class="container-fluid">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" style="background-color:#7189EE">
+                            <h4 class="title">My articles</h4>
+                            <p class="category">Here the list of your beautiful articles {{member}}</p>
+
+
+                        </div>
+                        <div class="card-content table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                <th>Title</th>
+                                <th>Subtitle</th>
+
+                                <th>Content</th>
+                                <th>Validated</th>
+                                <th>Written in</th>
+                                </thead>
+                                <tbody>
+                                {% for article in articles %}
+                                <tr>
+                                    <td>{{article.title|truncatewords:5}}</td>
+                                    <td>{{article.subtitle|truncatewords:5}}</td>
+
+                                    <td>{{article.textContent|truncatewords:5}}</td>
+                                    <td>{{article.isValidate}}</td>
+                                    <td>{{article.pubDate}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+
+						$(document).ready(function(){
+  						  $("#addFile").click(function(){
+
+								 $("#myModal").modal();
+								 $("#myModal").modal({backdrop: true});
+
+
+    							});
+							});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
+
+            </div>
+
+            {% elif activity == "active" %}
+
+            <div class="container-fluid">
+                <div class="row">
+                    <br><br><br>
+
+
+                            <div align="center" >
+
+                                <i class="fa fa-battery-1" style="font-size : 120px ;"></i>
+                                <p style="font-size : 40px ;">oops  :'(</p>
+                                <br><br><br>
+
+                                <p> Don't worry, this part of webapp isn't functional yet.
+                                </p>
+                            </div>
+
+
+                </div>
+            </div>
+
+            {% endif %}
+
+
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="/home/">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/magazine/">
+                                Magazine
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </footer>
+    </div>
+</div>
+</div>
+<div id="modalForm">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:15px 20px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="fa fa-file">&nbsp;</span> Add a new file</h4>
+                </div>
+                <div class="modal-body" style="padding:20px 20px;">
+                    <form role="form" enctype="multipart/form-data" method="POST" action=".">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="filename" placeholder="Choose a file name">
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Choose file category</label>
+                            <select class="form-control" id="sel1" name="category">
+                                {% for categ in categories %}
+                                <option>{{categ}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" placeholder="File description.."
+                                      rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5><u>Click here to Select a file</u></h5>
+                            <input type="file" name="inputfile" multiple="">
+
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-block"> <span
+                                class="fa fa-upload">&nbsp;</span> Upload
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<!--   Core JS Files   -->
+<script src="{% static 'accounts/assets_2/js/material.min.js' %}" type="text/javascript"></script>
+
+<!-- Date picker -->
+
+<!--  Charts Plugin -->
+<script src="{% static 'accounts/assets_2/js/chartist.min.js' %}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{% static 'accounts/assets_2/js/bootstrap-notify.js' %}"></script>
+
+<!-- Material accounts javascript methods -->
+<script src="{% static 'accounts/assets_2/js/material-dashboard.js' %}"></script>
+
+<!-- Material accounts DEMO methods, don't include it in your project! -->
+<script src="{% static 'accounts/assets_2/js/demo.js' %}"></script>
+
+
+</html>

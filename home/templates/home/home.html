@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    		{% load static %}
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>AllSafe Security Club</title>
+    <!-- core CSS -->
+    <link href="{% static 'home/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'home/assets/css/responsive.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{% static 'home/assets/js/html5shiv.js' %}"></script>
+    <script src="{% static 'home/assets/js/respond.min.js' %}"></script>
+    <![endif]-->
+    <!-- Online include -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+
+<body id="home" class="homepage">
+
+        <style>
+            #testimonial {
+            background: #333333 url({{configs.magazine.url}}) no-repeat 0 0;
+             background-size: cover;
+            padding: 100px 0;
+             color: #fff;
+                }
+
+             #animated-number {
+             padding: 100px 0 70px;
+             background: #132125 url({{configs.funFacts.url}}) no-repeat 0 0;
+             background-size: cover;
+             color: #fff;
+                }
+            #cta2 {
+             background: #242a33 url({{configs.creative.url}}) no-repeat 50% 50%;
+             background-size: cover;
+             color: #fff;
+             padding-top: 70px;
+                }
+            body {
+    font-family: lato;}
+        </style>
+
+    <header id="header">
+        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home"><img class="img-responsive" src="{% static 'home/assets/images/allsafelogo.png' %}" alt="logo" width="180" height="60"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="scroll active"><a href="#home">Home</a></li>
+                        <li class="scroll"><a href="#about">About</a></li>
+                        <li class="scroll"><a href="#blog">Magazine</a></li>
+                        <li class="scroll"><a href="#portfolio">Projects</a></li>
+                        <li class="scroll"><a href="#meet-team">Team</a></li>
+                        <li class="scroll"><a href="#features">What we do</a></li>
+                        <li class="scroll"><a href="#pricing">Press</a></li>
+                        <li class="scroll"><a href="#contact">Contact</a></li>
+
+
+                        {% if user.is_authenticated %}
+                        <li><a href="login"><u>Hello {{user.username}}!</u></a></li>
+                        {% else %}
+                        <li><a href="/inscription/">Join us</a></li>
+                        <li><a href="/account/login">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="main-slider">
+        <div class="owl-carousel">
+
+            {% for slide in allSliders %}
+
+            <div class="item" style="background-image: url({{ slide.image.url }});">
+                <div class="slider-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h2><span>{{slide.blue_title}}</span> {{slide.title}}</h2>
+                                    <p>{{slide.text}}</p>
+                                    {% if slide.has_link %}
+                                    <a class="btn btn-primary btn-lg" href="{{slide.link}}">{{slide.textoverlink}}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+     </section>
+    <section id="about">
+        <div class="container">
+
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">About Us</h2>
+                <p class="text-center wow fadeInDown">Because we believe that everyone has the right to defend his services and protect his cyber life<br> AllSafe has been created.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 wow fadeInLeft">
+                    <h3 class="column-title">Video Intro</h3>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="854" height="480" src="https://www.youtube.com/embed/{{configs.intro}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 wow fadeInRight">
+                    <h3 class="column-title">Multi Capability</h3>
+                    <p>All safe is a non-profit club established within the National School of Engineering in Sousse (ENISO) in 25/01/2017.</p>
+                    <p>From ethical hacking skills to cyber technology we introduce it all to our members through our various workshops and events organized by engineering students themselves. We also help them get familiar with the whole concept of computer security.</p>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="nostyle">
+                                <li><i class="fa fa-check-square"></i>Sharing knowledge through our magazine.</li>
+                                <li><i class="fa fa-check-square"></i>Projects to imrpove your skills.</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <ul class="nostyle">
+                                <li><i class="fa fa-check-square"></i>Multiple workshops</li>
+                                <li><i class="fa fa-check-square"></i>Get to action and start learning Ethical Hacking.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary" href="/inscription">Join us</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--
+    <section id="animated-number">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Fun Facts</h2>
+                <p class="text-center wow fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="0ms">
+                        <div class="animated-number" data-digit="2305" data-duration="1000"></div>
+                        <strong>Website visitors</strong>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="100ms">
+                        <div class="animated-number" data-digit="1231" data-duration="1000"></div>
+                        <strong>Events organized</strong>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="200ms">
+                        <div class="animated-number" data-digit="3025" data-duration="1000"></div>
+                        <strong>PROJECT COMPLETED</strong>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                        <div class="animated-number" data-digit="1199" data-duration="1000"></div>
+                        <strong>QUESTIONS ANSWERED</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Latest Articles</h2>
+                <p class="text-center wow fadeInDown"> All the latest articles about cyber security are deliviered in this section to satisfy your curiosity.<br>We share knowledge!</p>
+            </div>
+
+            <div class="row">
+                {% for article in articles %}
+
+                {% if forloop.first %}
+                <div class="col-sm-6">
+                    <div class="blog-post blog-large wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="0ms">
+                        <article>
+                            <header class="entry-header">
+                                <div class="entry-thumbnail">
+                                    <img class="img-responsive" src="{{article.image.url}}" alt="">
+                                    <span class="post-format post-format-video"><i class="fa fa-image"></i></span>
+                                </div>
+                                <div class="entry-date">{{article.pubDate}}</div>
+                                <h2 class="entry-title"><a href="#">{{article.title}}</a></h2>
+                            </header>
+
+                            <div class="entry-content">
+                                <P>{{article.textContent}}</P>
+                                <a class="btn btn-primary" href="/magazine">Read More</a>
+                            </div>
+
+                            <footer class="entry-meta">
+                                {% for auth in article.authors.all %}
+                                    <span class="entry-author"><i class="fa fa-pencil"></i> <a href="#">{{auth.user.first_name}} {{auth.user.last_name}}</a></span>
+                                    {% endfor %}
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+                 <div class="col-sm-6">
+                {% else %}
+
+                    <div class="blog-post blog-media wow fadeInRight" data-wow-duration="300ms" data-wow-delay="100ms">
+                        <article class="media clearfix">
+                            <div class="entry-thumbnail pull-left">
+                                <img class="img-responsive" src="{{article.image.url}}" alt="">
+                                <span class="post-format post-format-gallery"><i class="fa fa-image"></i></span>
+                            </div>
+                            <div class="media-body">
+                                <header class="entry-header">
+                                    <br>
+                                    <div class="entry-date">{{article.pubDate}}</div>
+                                    <h2 class="entry-title"><a href="#">{{article.title}}</a></h2>
+                                </header>
+
+                                <div class="entry-content">
+                                    <P>{{article.textContent}}</P>
+                                    <a class="btn btn-primary" href="/magazine">Read More</a>
+                                </div>
+
+                                <footer class="entry-meta">
+                                    {% for auth in article.authors.all %}
+                                    <span class="entry-author"><i class="fa fa-pencil"></i> <a href="#">{{auth.user.first_name}} {{auth.user.last_name}}</a></span>
+                                    {% endfor %}
+                                </footer>
+                            </div>
+                        </article>
+                    </div>
+
+                {% endif %}
+                {% endfor %}
+                     </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="cta2">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>AllSAFE</span> IS A CREATIVE CYBER SECURITY CLUB</h2>
+                <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">As the first security club in our school, our activities are carefully chosen by our team<br/>to highlight the creativity,passion and dedication of all the members.</p>
+                <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms"><a class="btn btn-primary btn-lg" href="#">Join us</a></p>
+                <img class="img-responsive wow fadeIn" src="{% static 'home/assets/images/cta2/cta2-img.png' %}" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Our Work</h2>
+                <p class="text-center wow fadeInDown">What's the most important about a club are the projects that the whole team works on. <br> That's why in this shutter we chose to share with you our work. </p>
+            </div>
+
+            <div class="text-center">
+                <ul class="portfolio-filter">
+
+                    <li><a class="active" href="#" data-filter="*">All Works</a></li>
+
+                    {% for filter in projects_filter%}
+                    <li><a href="#" data-filter=".{{filter|cut:' '}}">{{filter}}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+            <div class="portfolio-items">
+
+                {% for project in projects %}
+
+                <div class="portfolio-item {{project.project_category|cut:' '}}">
+                    <div class="portfolio-item-inner">
+                        <img class="img-responsive" src="{{project.image.url}}" alt="{{project}}">
+                        <div class="portfolio-info">
+                            <h3>{{project}}</h3>
+                            <p>{{project.project_category}}</p>
+                            <p>{{project.project_description}}</p>
+                            <a class="preview" href="{{project.image.url}}" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <section id="meet-team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Meet The Team</h2>
+                <p class="text-center wow fadeInDown"> Beautiful minds, multiple efforts,<br>  but always work as one team!</p>
+            </div>
+
+            <div class="row">
+                {% for m in allMembers %}
+                  {% if m.user.is_staff %}
+
+                 <div class="col-sm-6 col-md-3">
+                    <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="100ms">
+                        <div class="team-img">
+                            <img class="img-responsive" src="{{ m.avatar.url }}" alt="a" style=" height: 250px; width: 100%" >
+                        </div>
+                        <div class="team-info">
+                            <h3>{{ m.user.first_name }} {{ m.user.last_name }}</h3>
+                            <span>{{ m.function }}</span>
+                        </div>
+
+                        <ul class="social-icons">
+                            <li><a href="{{m.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{m.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+
+            <div class="divider"></div>
+
+        </div>
+    </section>
+    <section id="testimonial">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+
+                    <div id="carousel-testimonial" class="carousel slide text-center" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+
+
+                            {% for member in allMembers %}
+
+                            <div class="item {% if forloop.first %} active{% endif %}">
+                                <p><img class="img-circle img-thumbnail" src="{{ member.avatar.url }}" alt="avatar" style=" height: 100px; width: 100px"></p>
+                               <h4>{{ member.user.first_name}}</h4>
+                               <small>{{ member.function }}</small>
+                             <p> {{member.status}} </p>
+                            </div>
+
+
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="btns">
+                            <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="prev">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="next">
+                                <span class="fa fa-angle-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Awesome Features</h2>
+                <p class="text-center wow fadeInDown">What are the features that distinguish our club from other security clubs? <br> We present you the contents of our workshops as the perfect answer to that question.</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 wow fadeInLeft">
+                    <img class="img-responsive" src="{{configs.features.url}}" alt="allsafe">
+                </div>
+                <div class="col-sm-6">
+                    <div class="media service-box wow fadeInRight">
+                        <div class="pull-left">
+                            <i class="fa fa-file-picture-o"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Steganography</h4>
+                            <p> Is the practice of concealing a file, message, image, or video within another file, message, image, or video.</p>
+                        </div>
+                    </div>
+
+                    <div class="media service-box wow fadeInRight">
+                        <div class="pull-left">
+                            <i class="fa fa-internet-explorer"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Web Security</h4>
+                            <p>deals essentially with security of websites, web applications and web services</p>
+                        </div>
+                    </div>
+
+                    <div class="media service-box wow fadeInRight">
+                        <div class="pull-left">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Cryptography</h4>
+                            <p>Is the practice and study of techniques for secure communication in the presence of third parties called adversaries. More generally, cryptography is about constructing and analyzing protocols that prevent third parties or the public from reading private messages</p>
+                        </div>
+                    </div>
+
+                    <div class="media service-box wow fadeInRight">
+                        <div class="pull-left">
+                            <i class="fa fa-bug"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Forensic</h4>
+                            <p>Investigate a system whose purpose is to identify an attacker or an attack scenario</p>
+                        </div>
+                    </div>
+                     <div class="media service-box wow fadeInRight">
+                        <div class="pull-left">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Reverse engineering</h4>
+                            <p>Is the process of extracting informations from any program or application in order to rebuild other applications using the extracted knowledge or informations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Our activities in videos</h2>
+                <p class="text-center wow fadeInDown">Don't miss the slightest detail and live the experience with us.</p>
+            </div>
+
+            <div class="row">
+
+                {% for vid in videos %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="wow zoomIn" data-wow-duration="400ms" data-wow-delay="200ms">
+                        <ul class="pricing">
+                            <li class="plan-header">
+                                <div class="plan-name">
+                                 {{vid.title}}
+                                </div>
+                            </li>
+                            <li>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="854" height="480" src="https://www.youtube.com/embed/{{vid.iframe}}" frameborder="0" allowfullscreen></iframe>                         </div>
+                            <li>{{vid.description}}</li>
+                            </li>
+
+                            <li class="plan-purchase"><a class="btn btn-info" href="https://www.youtube.com/channel/UC9mzdcuGG6yjv2V1rrTyjQw">Watch more</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+      <div id="google-map" style="height:650px" data-latitude="35.82039" data-longitude="10.5930903"></div>
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <div class="contact-form">
+                            <h3>Contact Info</h3>
+
+                            <address>
+                              <strong>AllSafe Security Club</strong><br>
+                              Ecole Nationale d'Ingénieurs de Sousse, Adresse : BP 264 Sousse Erriadh 4023<br>
+
+                            </address>
+
+                            <form  method="post" action="/contact/">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control" rows="8" placeholder="Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="get-in-touch">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Get in Touch</h2>
+                <p class="text-center wow fadeInDown">Subscribe to our newsletter and receive the latest updates in our magazine.<br> Don't think twice,
+                    we won't be a burden !
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <label>Subscribe to our newslettre </label>
+                     <form action="/contact/newslettre/" method="post">
+                          {% csrf_token %}
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                      <input class="form-control" type="email"  name="email" placeholder="Email">
+                    </div>
+                    <input type="submit" value="Subscribe" class="btn btn-large btn-primary" />
+              </form>
+                </div>
+
+            </div>
+
+	</div>
+        </div>
+    </section>
+
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2017 AllSafe Security Club-ENISO.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/allsafeclub"><i class="fa fa-facebook"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="{% static 'home/assets/js/jquery.js' %}"></script>
+    <script src="{% static 'home/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/mousescroll.js' %}"></script>
+    <script src="{% static 'home/assets/js/smoothscroll.js' %}"></script>
+    <script src="{% static 'home/assets/js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'home/assets/js/jquery.isotope.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/jquery.inview.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/main.js' %}"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    
+
+
+</body>
+</html>
