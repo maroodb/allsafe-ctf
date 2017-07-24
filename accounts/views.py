@@ -1,19 +1,27 @@
 import datetime
 
-from django.contrib.auth import authenticate
+import requests
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from accounts.forms import ConnexionForm
+from accounts.forms import ConnexionForm, RegistrationForm, MemberForm
+from ctf.models import ExternalCTF
 from home.views import home
+from members.models import FakeUser
+from django.utils import timezone
 
 
 @login_required
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+
+    user = request.user
+    externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
+    return render(request, 'accounts/home.html', locals())
 
 
-def login(request):
+def login_view(request):
     error = False
     sql = False
     if request.user.is_authenticated():
@@ -80,3 +88,43 @@ def my_profile(request):
 
     return render(request, 'accounts/dashboard.html', locals())
 
+
+def signup(request):
+    user_form = RegistrationForm(request.POST or None)
+    if request.method == "POST":
+        post = True
+        valcaptcha = request.POST.get("g-recaptcha-response")
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        data = {
+            'secret': '6LcxfiEUAAAAANAbaIof6VfqxYLDWvGdvPEIkC_M',
+            'response': valcaptcha,
+        }
+
+        r = requests.post(url, data)
+        result = r.json()
+        success = result["success"]
+        if success:
+            if user_form.is_valid():
+                username = user_form.cleaned_data["username"]
+                password = user_form.cleaned_data["password1"]
+                first_name = user_form.cleaned_data["first_name"]
+                last_name = user_form.cleaned_data["last_name"]
+                email = user_form.cleaned_data["email"]
+
+                fake_user = FakeUser()
+                fake_user.email = email
+                fake_user.password = password
+
+                user = User.objects.create_user(username, email, password)
+                user.is_active = False
+                user.first_name = first_name
+                user.last_name = last_name
+
+                user.save()
+                fake_user.save()
+                received = True
+            else:
+                received = False
+
+    return render(request, "accounts/signup.html", locals())

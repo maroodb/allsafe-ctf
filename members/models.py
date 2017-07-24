@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
+from ctf.models import Challenge
+
 
 class Position(models.Model):
     position = models.CharField(max_length=50, null=True)
@@ -32,6 +34,7 @@ class Member(models.Model):
     status = models.CharField(max_length=80, null=True)
     linkedin = models.CharField(default='#', max_length=300, blank=True)
     facebook = models.CharField(default='#', max_length=300, blank=True)
+    score = models.IntegerField(default=0)
 
     def __str__(self):
         return "{0}".format(self.user)
@@ -60,3 +63,11 @@ class Task(models.Model):
             return True
         else:
             return False
+
+
+class FakeUser(models.Model):
+    email = models.EmailField()
+    password = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.email

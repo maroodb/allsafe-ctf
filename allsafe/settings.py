@@ -27,7 +27,7 @@ DEBUG = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["d45fd142.ngrok.io", "127.0.0.1"]
 
 
 # Application definition
@@ -39,9 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_ajax',
     'home',
     'accounts',
     'members',
+    'ctf',
+    'design',
+    'projects',
+    'magazine',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +65,7 @@ ROOT_URLCONF = 'allsafe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

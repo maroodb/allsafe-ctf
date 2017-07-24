@@ -22,8 +22,12 @@ from home.views import home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home),
     url(r'^account/', include('accounts.urls')),
+    url(r'^blog/', include('blog.urls')),
+    url(r'^projects/', include('projects.urls')),
+    url(r'^magazine/', include('magazine.urls')),
+    url(r'^ctf/', include('ctf.urls')),
+    url(r'^', include('home.urls')),
 
 
 ]

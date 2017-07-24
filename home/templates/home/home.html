@@ -84,7 +84,7 @@
 
 
                         {% if user.is_authenticated %}
-                        <li><a href="login"><u>Hello {{user.username}}!</u></a></li>
+                        <li><a href="/account/login"><u>Hello {{user.username}}!</u></a></li>
                         {% else %}
                         <li><a href="/inscription/">Join us</a></li>
                         <li><a href="/account/login">Login</a></li>
