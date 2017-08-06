@@ -187,14 +187,14 @@ def publish_news(request):
 def members(request):
 
     launch_date = 2017
-    now_date = 2017
+    now_date = int(timezone.now().strftime("%Y"))
     years = list()
+
     while now_date >= launch_date:
         years.append(now_date)
         now_date -= 1
 
     all_members = Member.objects.all()
-
     return render(request, "accounts/members.html", locals())
 
 

@@ -299,13 +299,13 @@
                                 <i class="icon-briefcase"></i> CTF </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
                                 <li class="{{ score }}">
-                                    <a href="/accounts/dashboard/scoreboard"> Scoreboard </a>
+                                    <a href="/ctf/scoreboard"> Scoreboard </a>
                                 </li>
                                 <li class="{{ challenge }}">
-                                    <a href="/accounts/dashboard/challenges"> Challenges </a>
+                                    <a href="/ctf/challenges"> Challenges </a>
                                 </li>
                                 <li class="{{ upld }}">
-                                    <a href="/accounts/dashboard/upload"> Upload a challenge </a>
+                                    <a href="/ctf/upload"> Upload a challenge </a>
                                 </li>
                                 <li class="dropdown more-dropdown-sub">
                                     <a href="javascript:;"> Externals CTF </a>
@@ -371,7 +371,7 @@
                             <a href="javascript:;" class="text-uppercase"> More </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">School</a>
+                                   <a href="/account/members">Members</a>
                                 </li>
                                 <li>
                                     <a href="#">Videos</a>
@@ -418,7 +418,7 @@
                             <div id="js-grid-juicy-projects" class="cbp">
                                 {% for member in all_members %}
 
-                                    <div class="cbp-item ">
+                                    <div class="cbp-item {{ member.date_of_join|date:"Y" }}">
                                         <div class="cbp-caption">
                                             <div class="cbp-caption-defaultWrap">
                                                 <img src="{{ member.avatar.url }}"
