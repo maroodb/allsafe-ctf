@@ -4,18 +4,19 @@ import requests
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-from accounts.forms import ConnexionForm, RegistrationForm, MemberForm
+from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageForm, NewsForm
+from blog.models import News
 from ctf.models import ExternalCTF
 from home.views import home
-from members.models import FakeUser
+from members.models import FakeUser, Member
 from django.utils import timezone
 
 
 @login_required
 def dashboard(request):
-
     user = request.user
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
     return render(request, 'accounts/home.html', locals())
@@ -64,29 +65,43 @@ def logout(request):
 
 @login_required
 def my_profile(request):
-
-    profile="active"
+    image_form = ImageForm(request.POST or None, request.FILES)
+    profile = "active"
     today = datetime.date.today().strftime('%Y-%m-%d')
     current_user = request.user
     member = current_user.member
-    if request.method == "POST":
+    uploads = member.news_set.count() + member.article_set.count() + member.challenge_uploader.count()
+    if request.POST and request.FILES:
+        if image_form.is_valid():
+            image = image_form.cleaned_data["image"]
+            member.avatar = image
+            member.save()
 
-        slogan=request.POST.get('slogan', None)
-        date_birth=request.POST.get('date', None)
-        gender=request.POST.get('gender')
-        linkedin=request.POST.get('linkedin', None)
-        facebook=request.POST.get('facebook', None)
-        birthday = datetime.datetime.strptime(date_birth, '%Y-%m-%d').date()
+    elif request.method == "POST":
 
-        member.status = slogan
-        member.linkedin = linkedin
-        member.facebook = facebook
-        member.gender = gender
-        member.birthday = birthday
-
+        testimonial = request.POST.get('testimonial', "")
+        date_birth = request.POST.get('birthday', "")
+        linkedin = request.POST.get('linkedin', "")
+        facebook = request.POST.get('facebook', "")
+        phone = request.POST.get("phone", "")
+        username = request.POST.get("username", "None")
+        if date_birth != "":
+            birthday = datetime.datetime.strptime(date_birth, '%Y-%m-%d').date()
+            member.birthday = birthday
+        if testimonial != "":
+            member.status = testimonial
+        if linkedin != "":
+            member.linkedin = linkedin
+        if facebook != "":
+            member.facebook = facebook
+        if phone != "":
+            member.phone = phone
+        if username != "":
+            request.user.username = username
+            request.user.save()
         member.save()
 
-    return render(request, 'accounts/dashboard.html', locals())
+    return render(request, 'accounts/profile.html', locals())
 
 
 def signup(request):
@@ -113,6 +128,7 @@ def signup(request):
                 email = user_form.cleaned_data["email"]
 
                 fake_user = FakeUser()
+                member = Member()
                 fake_user.email = email
                 fake_user.password = password
 
@@ -120,11 +136,73 @@ def signup(request):
                 user.is_active = False
                 user.first_name = first_name
                 user.last_name = last_name
+                member.user = user
 
                 user.save()
+                member.save()
                 fake_user.save()
                 received = True
             else:
                 received = False
 
     return render(request, "accounts/signup.html", locals())
+
+
+@login_required
+def inbox(request):
+    return render(request, "accounts/inbox.html", locals())
+
+
+@login_required
+def chatroom(request):
+    return render(request, "accounts/chatroom.html", locals())
+
+
+@login_required
+def publish_news(request):
+    news_form = NewsForm(request.POST or None, request.FILES)
+
+    if request.POST:
+        post = True
+        done = False
+        if news_form.is_valid():
+            title = news_form.cleaned_data["title"]
+            subtitle = news_form.cleaned_data["subtitle"]
+            image = news_form.cleaned_data["image"]
+            content = news_form.cleaned_data["content"]
+
+            news = News()
+            news.content = content
+            news.image = image
+            news.title = title
+            news.subtitle = subtitle
+            news.publisher = request.user.member
+            news.save()
+
+            done = True
+
+    return render(request, "accounts/publish_news.html", locals())
+
+
+def members(request):
+
+    launch_date = 2017
+    now_date = 2017
+    years = list()
+    while now_date >= launch_date:
+        years.append(now_date)
+        now_date -= 1
+
+    all_members = Member.objects.all()
+
+    return render(request, "accounts/members.html", locals())
+
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    if data['is_taken']:
+        data['error_message'] = 'A user with this username (' + username + ') already exists'
+    return JsonResponse(data)

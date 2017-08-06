@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
-from ctf.models import Challenge
-
 
 class Position(models.Model):
     position = models.CharField(max_length=50, null=True)
@@ -29,12 +27,14 @@ class Member(models.Model):
     user = models.OneToOneField(User)
 
     avatar = models.ImageField(default="avatars/default.png", null=True, blank=True, upload_to="avatars/")
-    birthday = models.DateField(null=True)
+    birthday = models.DateField(null=True, default=datetime.date.today)
     function = models.ForeignKey(Position, null=True)
     status = models.CharField(max_length=80, null=True)
     linkedin = models.CharField(default='#', max_length=300, blank=True)
     facebook = models.CharField(default='#', max_length=300, blank=True)
     score = models.IntegerField(default=0)
+    phone = models.IntegerField(default=1111)
+    date_of_join = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "{0}".format(self.user)

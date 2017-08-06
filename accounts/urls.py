@@ -9,7 +9,10 @@ urlpatterns = [
     url(r'^myprofile/', my_profile),
     url(r'^signup/', signup),
     url(r'^logout/', logout),
-
-
+    #url(r'^inbox/', inbox),
+    url(r'^chatroom/', chatroom),
+    url(r'^publish/news/', publish_news),
+    url(r'^ajax/validate_username/$', validate_username, name='validate_username'),
+    url(r'^members/', members),
 
 ]

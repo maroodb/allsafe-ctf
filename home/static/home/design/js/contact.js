@@ -21,14 +21,35 @@
 
     $('#feedback_form').on('submit', function(event){
     event.preventDefault();
-    post_data() ;
+    var form_data = $("#feedback_form").serialize() ;
+    post_data(form_data) ;
 
     });
 
 
-    function post_data() {
-         ajaxPost('/feedback/', {'foo': 'bar'}, function(content){
-            //onSuccess
-            alert(content);
+    function post_data(data) {
+         var alert_form = $("#with_error");
+         var success_form = $ ("#with_success");
+         var spinner = $("#load_spinner");
+            alert_form.hide();
+            success_form.hide();
+            spinner.show();
+
+
+         ajaxPost('/feedback/',data, function(content){
+
+             var response = JSON.parse(content);
+             if ( ! response.robot && response.registered ) {
+                 spinner.hide();
+                 success_form.show();
+             }
+             else {
+                 spinner.hide();
+                 alert_form.show();
+             }
+
+
+            $('#feedback_form').trigger("reset");
+             grecaptcha.reset();
         })
     }

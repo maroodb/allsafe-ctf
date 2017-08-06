@@ -27,7 +27,7 @@ DEBUG = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-ALLOWED_HOSTS = ["d45fd142.ngrok.io", "127.0.0.1"]
+ALLOWED_HOSTS = ["95199a20.ngrok.io", "127.0.0.1"]
 
 
 # Application definition
@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'members',
-    'ctf',
     'design',
     'projects',
     'magazine',
     'blog',
+    'ctf',
+    'messenger',
 ]
 
 MIDDLEWARE = [

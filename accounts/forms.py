@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+
+from blog.models import News
 from members.models import Member
 
 
@@ -29,3 +31,14 @@ class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
         fields = ('avatar', 'status',)
+
+
+class ImageForm(forms.Form):
+    image = forms.ImageField()
+
+
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        exclude = ('publisher', 'date')
+

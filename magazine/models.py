@@ -5,7 +5,6 @@ from django.db import models
 from members.models import Member
 
 
-
 class Article(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)

@@ -68,7 +68,8 @@
                     <!-- End Toggle Button -->
                     <!-- BEGIN LOGO -->
                     <a id="index" class="page-logo" href="index.html">
-                        <img src="{% static 'home/design/img/allsafelogo.png' %}" alt="Logo" width="200" height="100"> </a>
+                        <img src="{% static 'home/design/img/allsafelogo.png' %}" alt="AllSafe">
+                    </a>
                     <!-- END LOGO -->
 
                     <!-- BEGIN TOPBAR ACTIONS -->
@@ -213,34 +214,31 @@
                                 <img src="{{ request.user.member.avatar.url }}" alt=""></button>
                             <ul class="dropdown-menu-v2" role="menu">
                                 <li>
-                                    <a href="page_user_profile_1.html">
+                                    <a href="/account/myprofile">
                                         <i class="icon-user"></i> My Profile
                                         <span class="badge badge-danger">1</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="app_calendar.html">
+                                    <a href="#">
                                         <i class="icon-calendar"></i> My Calendar </a>
                                 </li>
                                 <li>
-                                    <a href="app_inbox.html">
+                                    <a href="#">
                                         <i class="icon-envelope-open"></i> My Inbox
-                                        <span class="badge badge-danger"> 3 </span>
+                                        <span class="badge badge-danger"> 0 </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="app_todo_2.html">
+                                    <a href="#">
                                         <i class="icon-rocket"></i> My Tasks
-                                        <span class="badge badge-success"> 7 </span>
+                                        <span class="badge badge-success"> 0 </span>
                                     </a>
                                 </li>
                                 <li class="divider"></li>
+
                                 <li>
-                                    <a href="page_user_lock_1.html">
-                                        <i class="icon-lock"></i> Lock Screen </a>
-                                </li>
-                                <li>
-                                    <a href="page_user_login_1.html">
+                                    <a href="/account/logout">
                                         <i class="icon-key"></i> Log Out </a>
                                 </li>
                             </ul>
@@ -258,21 +256,21 @@
                 <!-- BEGIN HEADER MENU -->
                 <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-home"></i> Dashboard </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
                                 <li class="active">
-                                    <a href="index.html">
+                                    <a href="/account/dashboard">
                                         <i class="icon-bar-chart"></i> Home </a>
                                 </li>
                                 <li>
-                                    <a href="dashboard_2.html">
+                                    <a href="#">
                                         <i class="icon-bulb"></i> Club News </a>
                                 </li>
                                 <li>
-                                    <a href="dashboard_3.html">
-                                        <i class="icon-graph"></i> Hackers Chat </a>
+                                    <a href="/account/chatroom/">
+                                        <i class="icon-graph"></i> Hacking room </a>
                                 </li>
                             </ul>
                         </li>
@@ -281,39 +279,39 @@
                                 <i class="icon-puzzle"></i> Library </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
                                 <li>
-                                    <a href="dashboard_3.html">
+                                    <a href="#">
                                         <i class="icon-graph"></i> Resouces </a>
                                 </li>
                                 <li>
-                                    <a href="dashboard_3.html">
+                                    <a href="#">
                                         <i class="icon-graph"></i> Upload File </a>
                                 </li>
                                 <li>
-                                    <a href="dashboard_3.html">
+                                    <a href="#">
                                         <i class="icon-graph"></i> Search </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-briefcase"></i> CTF </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li>
+                                <li class="{{ score }}">
                                     <a href="/ctf/scoreboard"> Scoreboard </a>
                                 </li>
-                                <li>
-                                    <a href="table_static_responsive.html"> Challenges </a>
+                                <li class="{{ challenge }}">
+                                    <a href="/ctf/challenges"> Challenges </a>
                                 </li>
-                                <li>
-                                    <a href="table_bootstrap.html"> Upload a challenge </a>
+                                <li class="{{ upld }}">
+                                    <a href="/ctf/upload"> Upload a challenge </a>
                                 </li>
                                 <li class="dropdown more-dropdown-sub">
                                     <a href="javascript:;"> Externals CTF </a>
                                     <ul class="dropdown-menu">
                                         {% for ctf in externals_ctfs %}
                                             <li>
-                                            <a href="{{ ctf.link }}"> {{ ctf.name }} </a>
-                                        </li>
+                                                <a href="{{ ctf.link }}"> {{ ctf.name }} </a>
+                                            </li>
                                         {% endfor %}
 
                                     </ul>
@@ -325,13 +323,13 @@
                                 <i class="icon-briefcase"></i> Magazine </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
                                 <li>
-                                    <a href="table_static_basic.html"> Last version </a>
+                                    <a href="#"> Last version </a>
                                 </li>
                                 <li>
-                                    <a href="table_static_responsive.html"> Contribute </a>
+                                    <a href="#"> Contribute </a>
                                 </li>
                                 <li>
-                                    <a href="table_bootstrap.html"> Forum </a>
+                                    <a href="#"> Forum </a>
                                 </li>
                             </ul>
                         </li>
@@ -340,16 +338,13 @@
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-layers"></i> PROFILE </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
+
                                 <li>
-                                    <a href="dashboard_3.html">
-                                        <i class="icon-graph"></i> About me </a>
-                                </li>
-                               <li>
-                                    <a href="dashboard_3.html">
+                                    <a href="/account/myprofile">
                                         <i class="icon-graph"></i> Update Profile </a>
                                 </li>
                                 <li>
-                                    <a href="dashboard_3.html">
+                                    <a href="#">
                                         <i class="icon-graph"></i> Inbox </a>
                                 </li>
                                 <li class="dropdown more-dropdown-sub">
@@ -357,11 +352,11 @@
                                         <i class="icon-docs"></i> Publish </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="app_todo.html">
-                                                <i class="icon-clock"></i> News  </a>
+                                            <a href="#">
+                                                <i class="icon-clock"></i> News </a>
                                         </li>
                                         <li>
-                                            <a href="app_todo_2.html">
+                                            <a href="#">
                                                 <i class="icon-check"></i> Comment </a>
                                         </li>
 
@@ -395,9 +390,7 @@
     <!-- END HEADER -->
     <div class="container-fluid">
         <div class="page-content">
-            <!-- BEGIN BREADCRUMBS -->
 
-            <!-- END BREADCRUMBS -->
             <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
             <div class="page-content-container">
                 <div class="page-content-row">
@@ -426,7 +419,9 @@
                                     </div>
                                     <div class="portlet-body form">
                                         <!-- BEGIN FORM-->
-                                        <form action="#" class="form-horizontal form-bordered">
+                                        <form method="post" action="." class="form-horizontal form-bordered"
+                                              enctype="multipart/form-data">
+                                            {% csrf_token %}
                                             <div class="form-body">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Challenge File</label>
@@ -441,7 +436,9 @@
                                                                 <span class="input-group-addon btn default btn-file">
                                                                             <span class="fileinput-new"> Select file </span>
                                                                             <span class="fileinput-exists"> Change </span>
-                                                                            <input type="file" name="..."> </span>
+                                                                    <!--<input type="file" name="..."> -->
+                                                                            {{ upload_form.file }}
+                                                                </span>
                                                                 <a href="javascript:;"
                                                                    class="input-group-addon btn red fileinput-exists"
                                                                    data-dismiss="fileinput"> Remove </a>
@@ -450,33 +447,35 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-3">Name</label>
+                                                    <label class="control-label col-md-3">Category</label>
                                                     <div class="col-md-3">
-                                                        <select class="form-control todo-taskbody-tags">
-                                                            <option value="Pending">Pending</option>
-                                                            <option value="Completed">Completed</option>
-                                                            <option value="Testing">Testing</option>
-                                                            <option value="Approved">Approed</option>
-                                                            <option value="Rejected">Rejected</option>
-                                                        </select>
+                                                        {{ upload_form.category }}
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Points</label>
+                                                    <div class="col-md-3">
+                                                        {{ upload_form.points }}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Name</label>
                                                     <div class="col-md-3">
-                                                        <input type="text" class="form-control todo-taskbody-tasktitle">
+                                                        {{ upload_form.name }}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Description</label>
                                                     <div class="col-md-3">
-                                                        <input type="text" class="form-control todo-taskbody-tasktitle">
+
+                                                        {{ upload_form.description }}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Flag</label>
                                                     <div class="col-md-3">
-                                                        <input type="text" class="form-control todo-taskbody-tasktitle">
+                                                        {{ upload_form.flag }}
                                                     </div>
                                                 </div>
 
@@ -484,9 +483,29 @@
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <a href="javascript:;" class="btn green">
-                                                            <i class="fa fa-check"></i> Submit</a>
+                                                        <button class="btn green"><i class="fa fa-check"></i>Submit
+                                                        </button>
+
                                                     </div>
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-6">
+
+                                                        {% if done %}
+                                                            <div class="alert alert-success" style="background-color: transparent; border: transparent;">
+                                                                <strong>Success!</strong> The challenge has been added successfully.
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if not done and posted %}
+                                                             <div class="alert alert-danger" style="background-color: transparent; border: transparent;">
+                                                                <strong>ERROR!</strong> Something gone wrong, try again.
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </form>
@@ -502,12 +521,8 @@
             </div>
             <!-- END SIDEBAR CONTENT LAYOUT -->
         </div>
-        <!-- BEGIN FOOTER -->
-        <p class="copyright"> 2016 &copy; Metronic Theme By
-            <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
-            <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
-               title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase
-                Metronic!</a>
+         <!-- BEGIN FOOTER -->
+        <p class="copyright"> {% now "Y" %} &copy; AllSafe Security Club
         </p>
         <a href="#index" class="go2top">
             <i class="icon-arrow-up"></i>
@@ -1154,6 +1169,7 @@
 <script src="{% static 'ctf/assets/layouts/layout5/scripts/layout.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'ctf/assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'ctf/assets/layouts/global/scripts/quick-nav.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'ctf/custome/js/form.js' %}" type="application/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>
 

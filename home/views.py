@@ -1,3 +1,4 @@
+import requests
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django_ajax.decorators import ajax
@@ -5,7 +6,7 @@ from django_ajax.decorators import ajax
 from blog.models import News
 from design.models import Slide
 from home.forms import ContactForm
-from home.models import Visitor
+from home.models import Visitor, Contact
 from members.models import Member
 from projects.models import ProjectCategory, Project
 from itertools import chain
@@ -49,8 +50,41 @@ def team(request):
 
 @ajax
 def feedback(request):
-    tes = "yes"
-    return HttpResponse(tes)
+
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    subject = request.POST.get("subject")
+    message = request.POST.get("message")
+
+    valcaptcha = request.POST.get("g-recaptcha-response")
+
+    url = 'https://www.google.com/recaptcha/api/siteverify'
+    data = {
+        'secret': '6LdCnhUUAAAAACehzbK9SI9maF9Yfs9KsLfRlytN',
+        'response': valcaptcha,
+    }
+
+    r = requests.post(url, data)
+    result = r.json()
+    success = result["success"]
+    registered = False
+
+    if success:
+        new_contact = Contact()
+        new_contact.message = message
+        new_contact.subject = subject
+        new_contact.name = name
+        new_contact.email = email
+
+        new_contact.save()
+        registered = True
+
+    response = {
+        'robot': not success,
+        'registered': registered
+
+    }
+    return JsonResponse(response)
 
 
 def about(request):
