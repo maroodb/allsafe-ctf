@@ -129,7 +129,7 @@ var ComponentsFormTools = function () {
           }
         });
 
-    }
+    };
 
     var handleTwitterTypeaheadModal = function() {
 
@@ -259,7 +259,7 @@ var ComponentsFormTools = function () {
           }
         });
 
-    }
+    };
 
     var handleBootstrapSwitch = function() {
 
@@ -277,7 +277,7 @@ var ComponentsFormTools = function () {
             $('.switch-radio1').bootstrapSwitch('toggleRadioStateAllowUncheck', false);
         });
 
-    }
+    };
 
     var handleBootstrapTouchSpin = function() {
 
@@ -309,12 +309,12 @@ var ComponentsFormTools = function () {
             prefix: "$",
             postfix: "%"
         });
-    }
+    };
 
     var handleBootstrapMaxlength = function() {
         $('#maxlength_defaultconfig').maxlength({
             limitReachedClass: "label label-danger",
-        })
+        });
     
         $('#maxlength_thresholdconfig').maxlength({
             limitReachedClass: "label label-danger",
@@ -341,14 +341,14 @@ var ComponentsFormTools = function () {
             alwaysShow: true,
             placement: App.isRTL() ? 'top-right' : 'top-left'
         });
-    }
+    };
 
     var handleSpinners = function () {
         $('#spinner1').spinner();
         $('#spinner2').spinner({disabled: true});
         $('#spinner3').spinner({value:0, min: 0, max: 10});
         $('#spinner4').spinner({value:0, step: 5, min: 0, max: 200});
-    }
+    };
     
     var handleTagsInput = function () {
         if (!jQuery().tagsInput) {
@@ -363,7 +363,7 @@ var ComponentsFormTools = function () {
         $('#tags_2').tagsInput({
             width: 300
         });
-    }
+    };
     
     var handleInputMasks = function () {
         
@@ -404,14 +404,14 @@ var ComponentsFormTools = function () {
             placeholder: " ",
             clearMaskOnLostFocus: true
         }); //default
-    }
+    };
 
     var handleIPAddressInput = function () {
         $('#input_ipv4').ipAddress();
         $('#input_ipv6').ipAddress({
             v: 6
         });
-    }
+    };
 
     var handlePasswordStrengthChecker = function () {
         var initialized = false;
@@ -436,7 +436,7 @@ var ComponentsFormTools = function () {
                 initialized = true;
             }
         });
-    }
+    };
 
     var handleUsernameAvailabilityChecker1 = function () {
         var input = $("#username1_input");
@@ -511,7 +511,7 @@ var ComponentsFormTools = function () {
             }, 'json');
 
         });
-    }
+    };
 
     var handleUsernameAvailabilityChecker2 = function () {
         $("#username2_input").change(function () {
@@ -562,7 +562,7 @@ var ComponentsFormTools = function () {
             }, 'json');
 
         });
-    }
+    };
 
     return {
         //main function to initiate the module

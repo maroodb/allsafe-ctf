@@ -128,7 +128,7 @@ var FormValidationMd = function() {
                 error1.hide();
             }
         });
-    }
+    };
 
     var handleValidation2 = function() {
         // for more info visit the official plugin documentation: 
@@ -258,7 +258,7 @@ var FormValidationMd = function() {
                 error1.hide();
             }
         });
-    }
+    };
 
     var handleValidation3 = function() {
         // for more info visit the official plugin documentation: 
@@ -374,7 +374,7 @@ var FormValidationMd = function() {
                 error1.hide();
             }
         });
-    }
+    };
 
     return {
         //main function to initiate the module

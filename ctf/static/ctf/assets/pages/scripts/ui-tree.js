@@ -30,7 +30,7 @@ var UITree = function () {
                 return false;
             }
         });
-    }
+    };
 
     var handleSample2 = function () {
         $('#tree_2').jstree({
@@ -79,7 +79,7 @@ var UITree = function () {
                 }
             }
         });
-    }
+    };
 
     var contextualMenuSample = function() {
 
@@ -144,8 +144,8 @@ var UITree = function () {
             "state" : { "key" : "demo2" },
             "plugins" : [ "contextmenu", "dnd", "state", "types" ]
         });
-    
-    }
+
+    };
 
      var ajaxTreeSample = function() {
 
@@ -176,8 +176,8 @@ var UITree = function () {
             "state" : { "key" : "demo3" },
             "plugins" : [ "dnd", "state", "types" ]
         });
-    
-    }
+
+     };
 
 
     return {

@@ -132,7 +132,7 @@ var ComponentsTypeahead = function () {
           }
         });
 
-    }
+    };
 
     var handleTwitterTypeaheadModal = function() {
 
@@ -262,7 +262,7 @@ var ComponentsTypeahead = function () {
           }
         });
 
-    }
+    };
 
     return {
         //main function to initiate the module

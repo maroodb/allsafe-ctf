@@ -16,7 +16,8 @@
 		extendClass = H.extendClass,
 		defaultOptions = H.getOptions(),
 		plotOptions = defaultOptions.plotOptions,
-		noop = function () { return; },
+        noop = function () {
+        },
 		each = H.each,
 		grep = HighchartsAdapter.grep,
 		pick = H.pick,

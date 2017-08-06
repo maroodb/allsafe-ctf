@@ -11,7 +11,7 @@ var ComponentsNoUiSliders = function() {
                 'max': 100
             }
         });
-    }
+    };
 
     var demo3 = function() {
         var connectSlider = document.getElementById('demo3');
@@ -47,7 +47,7 @@ var ComponentsNoUiSliders = function() {
 
             connectBar.style[side] = offset + '%';
         });
-    }
+    };
 
     var demo4 = function() {
         //** init the select
@@ -94,7 +94,7 @@ var ComponentsNoUiSliders = function() {
         inputNumber.addEventListener('change', function(){
             html5Slider.noUiSlider.set([null, this.value]);
         });
-    }
+    };
 
     var demo5 = function() {
         var nonLinearSlider = document.getElementById('demo5');
@@ -131,7 +131,7 @@ var ComponentsNoUiSliders = function() {
                 upperValue.innerHTML = values[handle] + ', ' + leftValue(handles[handle]);
             }
         });
-    }
+    };
 
     var demo6 = function() {
         // Store the locked state and slider values.
@@ -218,7 +218,7 @@ var ComponentsNoUiSliders = function() {
         slider2.noUiSlider.on('slide', function( values, handle ){
             crossUpdate(values[handle], slider1);
         });
-    }
+    };
 
     var demo7 = function() {
         var softSlider = document.getElementById('demo7');
@@ -243,7 +243,7 @@ var ComponentsNoUiSliders = function() {
                 softSlider.noUiSlider.set(80);
             }
         });
-    }
+    };
 
     var demo8 = function() {
         var tooltipSlider = document.getElementById('demo8');
@@ -285,7 +285,7 @@ var ComponentsNoUiSliders = function() {
         tooltipSlider.noUiSlider.on('update', function( values, handle ){
             tooltips[handle].innerHTML = values[handle];
         });
-    }
+    };
 
     return {
         //main function to initiate the module

@@ -31,7 +31,7 @@ var Masonry = function() {
       });
       return this;
     };
-  }
+  };
 
   return {
     init: function() {

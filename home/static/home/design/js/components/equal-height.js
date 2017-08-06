@@ -8,7 +8,7 @@ var EqualHeight = function() {
       $('.js__form-eqaul-height-v1').responsiveEqualHeightGrid();
       $('.js__tab-eqaul-height-v1').responsiveEqualHeightGrid();
     });
-  }
+  };
 
   return {
     init: function() {

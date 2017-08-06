@@ -84,7 +84,7 @@ var Index = function () {
 		    "enabled": true
 		  }
 		});
-	}
+    };
 
 	var handleAnimatedPieChart = function() {
 		var chart = AmCharts.makeChart( "animated-pie-chart", {
@@ -133,7 +133,7 @@ var Index = function () {
 		  target[ property ] = value;
 		  chart.validateNow();
 		} );
-	}
+    };
 
 	var handleMorrisCharts = function() {
         if (Morris.EventEmitter) {
@@ -178,7 +178,7 @@ var Index = function () {
             });
 
         }
-    }
+    };
 
 	var handleSparklineCharts = function() {
         $("#sparkline_bar").sparkline([8, 9, 10, 11, 10, 10, 12, 10, 10, 11, 9, 12, 11], {
@@ -198,7 +198,7 @@ var Index = function () {
             barColor: '#5C9BD1',
             negBarColor: '#e02222'
         });
-    }
+    };
 
     return {
 

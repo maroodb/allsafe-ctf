@@ -26,4 +26,4 @@ AmCharts.translations[ "export" ][ "lt" ] = {
 	"menu.label.draw.modes.pencil": "Tekstą",
 	"menu.label.draw.modes.line": "Linija",
 	"menu.label.draw.modes.arrow": "Rodyklė"
-}
+};

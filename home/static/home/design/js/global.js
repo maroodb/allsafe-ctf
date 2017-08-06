@@ -23,7 +23,7 @@ var Global = function() {
     $('.popovers-hide').popover('hide');
     $('.popovers-toggle').popover('toggle');
     $('.popovers-destroy').popover('destroy');
-  }
+  };
 
   // Scroll To Section
   var handleScrollToSection = function() {
@@ -41,7 +41,7 @@ var Global = function() {
         }
       });
     });
-  }
+  };
 
   // Handle Promo Section
   var handlePromoSection = function() {
@@ -49,7 +49,7 @@ var Global = function() {
       $(this).css('background-image', 'url(' + $(this).children('img').attr('src') + ')');
       $(this).children('img').hide();
     });
-  }
+  };
 
   // Handle Overlay
   var handleOverlay = function() {
@@ -62,7 +62,7 @@ var Global = function() {
       headerOverlay.toggleClass('-is-open');
       trigger.toggleClass('-is-active');
     });
-  }
+  };
 
   // Vertical Center Aligned
   // Note! This works only with promo block and background image via CSS.
@@ -75,7 +75,7 @@ var Global = function() {
         $(this).css('padding-top', $(this).parent().height() / 2 - $(this).height() / 2);
       });
     });
-  }
+  };
 
   // handle group element heights
   var handleEqualHeight = function() {
@@ -112,8 +112,8 @@ var Global = function() {
       if(parent.attr('data-related')) {
         $(parent.attr('data-related')).css('height', parent.height());
       }
-   });       
-  }
+   });
+  };
 
   return {
     init: function() {

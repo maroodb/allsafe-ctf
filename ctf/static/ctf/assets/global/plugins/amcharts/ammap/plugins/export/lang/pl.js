@@ -26,4 +26,4 @@ AmCharts.translations[ "export" ][ "pl" ] = {
     "menu.label.draw.modes.pencil": "Ołówek",
     "menu.label.draw.modes.line": "Linia",
     "menu.label.draw.modes.arrow": "Strzałka"
-}
+};

@@ -682,17 +682,17 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 					// NEW
 					if ( a[ i1 ] == undefined || overwrite ) {
 						if ( v instanceof Array ) {
-							a[ i1 ] = new Array();
+                            a[i1] = [];
 						} else if ( v instanceof Function ) {
 							a[ i1 ] = new Function();
 						} else if ( v instanceof Date ) {
 							a[ i1 ] = new Date();
 						} else if ( v instanceof Object ) {
-							a[ i1 ] = new Object();
+                            a[i1] = {};
 						} else if ( v instanceof Number ) {
-							a[ i1 ] = new Number();
+                            a[i1] = Number();
 						} else if ( v instanceof String ) {
-							a[ i1 ] = new String();
+                            a[i1] = String();
 						}
 					}
 
@@ -867,7 +867,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 							width: Number( childNode.getAttribute( "width" ) ),
 							height: Number( childNode.getAttribute( "height" ) ),
 							repeat: "repeat"
-						}
+                        };
 
 						// GATHER BACKGROUND COLOR
 						for ( i2 = 0; i2 < childNode.childNodes.length; i2++ ) {
@@ -970,7 +970,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 				var images = {
 					loaded: 0,
 					included: 0
-				}
+                };
 
 				// GATHER SVGS
 				var svgs = _this.setup.chart.containerDiv.getElementsByTagName( "svg" );
@@ -985,7 +985,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 						},
 						patterns: {},
 						clippings: {}
-					}
+                    };
 
 					// GATHER ELEMENTS
 					group = _this.gatherElements( group, cfg, images );
@@ -1012,7 +1012,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 						},
 						patterns: {},
 						clippings: {}
-					}
+                    };
 
 					// ADAPT CANVAS DIMENSIONS
 					if ( [ "left", "right" ].indexOf( group.legend.position ) != -1 ) {
@@ -1047,7 +1047,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 						right: 0,
 						bottom: 0,
 						left: 0
-					}
+                    };
 					if ( _this.setup.chart.leftContainer ) {
 						offset.width -= _this.setup.chart.leftContainer.offsetWidth;
 						padding.left = _this.setup.chart.leftContainer.offsetWidth + ( _this.setup.chart.panelsSettings.panelSpacing * 2 );
@@ -1207,7 +1207,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 					if ( Number( new Date() ) - _this.drawing.buffer.pressedTS < 200 || _this.drawing.buffer.hasLine ) {
 						_this.setup.fabric.remove( item );
 						_this.setup.fabric.renderAll();
-						return;
+
 					}
 				} );
 
@@ -1545,7 +1545,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 								"start": "left",
 								"middle": "center",
 								"end": "right"
-							}
+                            };
 
 							for ( i1 = 0; i1 < svg.childNodes.length; i1++ ) {
 								lines.push( svg.childNodes[ i1 ].textContent );
@@ -1573,7 +1573,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 							// TRANSPORT FILL/STROKE OPACITY
 							var attrs = [ "fill", "stroke" ];
 							for ( i1 = 0; i1 < attrs.length; i1++ ) {
-								var attr = attrs[ i1 ]
+                                var attr = attrs[i1];
 								var attrVal = String( svg.getAttribute( attr ) || "" );
 								var attrOpacity = Number( svg.getAttribute( attr + "-opacity" ) || "1" );
 								var attrRGBA = fabric.Color.fromHex( attrVal ).getSource();
@@ -1586,7 +1586,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 
 								if ( attrRGBA ) {
 									attrRGBA.pop();
-									attrRGBA.push( attrOpacity )
+                                    attrRGBA.push(attrOpacity);
 									obj[ attr ] = "rgba(" + attrRGBA.join() + ")";
 									obj[ attr + _this.capitalize( "opacity" ) ] = attrOpacity;
 								}
@@ -1907,7 +1907,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 				var wb = {
 					SheetNames: [],
 					Sheets: {}
-				}
+                };
 
 				cfg.data = cfg.data ? cfg.data : _this.getChartData( cfg );
 
@@ -2029,32 +2029,32 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 				var cfg = _this.deepMerge( {
 					// NUFFIN
 				}, options || {} );
-				var Arr = ( typeof Uint8Array !== 'undefined' ) ? Uint8Array : Array
-				var PLUS = '+'.charCodeAt( 0 )
-				var SLASH = '/'.charCodeAt( 0 )
-				var NUMBER = '0'.charCodeAt( 0 )
-				var LOWER = 'a'.charCodeAt( 0 )
-				var UPPER = 'A'.charCodeAt( 0 )
+                var Arr = ( typeof Uint8Array !== 'undefined' ) ? Uint8Array : Array;
+                var PLUS = '+'.charCodeAt(0);
+                var SLASH = '/'.charCodeAt(0);
+                var NUMBER = '0'.charCodeAt(0);
+                var LOWER = 'a'.charCodeAt(0);
+                var UPPER = 'A'.charCodeAt(0);
 				var data = b64ToByteArray( cfg.data );
 
 				function decode( elt ) {
-					var code = elt.charCodeAt( 0 )
+                    var code = elt.charCodeAt(0);
 					if ( code === PLUS )
-						return 62 // '+'
+                        return 62; // '+'
 					if ( code === SLASH )
-						return 63 // '/'
+                        return 63; // '/'
 					if ( code < NUMBER )
-						return -1 //no match
+                        return -1; //no match
 					if ( code < NUMBER + 10 )
-						return code - NUMBER + 26 + 26
+                        return code - NUMBER + 26 + 26;
 					if ( code < UPPER + 26 )
-						return code - UPPER
+                        return code - UPPER;
 					if ( code < LOWER + 26 )
 						return code - LOWER + 26
 				}
 
 				function b64ToByteArray( b64 ) {
-					var i, j, l, tmp, placeHolders, arr
+                    var i, j, l, tmp, placeHolders, arr;
 
 					if ( b64.length % 4 > 0 ) {
 						throw new Error( 'Invalid string. Length must be a multiple of 4' )
@@ -2065,34 +2065,34 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 					// REPRESENT ONE BYTE
 					// IF THERE IS ONLY ONE, THEN THE THREE CHARACTERS BEFORE IT REPRESENT 2 BYTES
 					// THIS IS JUST A CHEAP HACK TO NOT DO INDEXOF TWICE
-					var len = b64.length
-					placeHolders = '=' === b64.charAt( len - 2 ) ? 2 : '=' === b64.charAt( len - 1 ) ? 1 : 0
+                    var len = b64.length;
+                    placeHolders = '=' === b64.charAt(len - 2) ? 2 : '=' === b64.charAt(len - 1) ? 1 : 0;
 
 					// BASE64 IS 4/3 + UP TO TWO CHARACTERS OF THE ORIGINAL DATA
-					arr = new Arr( b64.length * 3 / 4 - placeHolders )
+                    arr = new Arr(b64.length * 3 / 4 - placeHolders);
 
 					// IF THERE ARE PLACEHOLDERS, ONLY GET UP TO THE LAST COMPLETE 4 CHARS
-					l = placeHolders > 0 ? b64.length - 4 : b64.length
+                    l = placeHolders > 0 ? b64.length - 4 : b64.length;
 
-					var L = 0
+                    var L = 0;
 
 					function push( v ) {
 						arr[ L++ ] = v
 					}
 
 					for ( i = 0, j = 0; i < l; i += 4, j += 3 ) {
-						tmp = ( decode( b64.charAt( i ) ) << 18 ) | ( decode( b64.charAt( i + 1 ) ) << 12 ) | ( decode( b64.charAt( i + 2 ) ) << 6 ) | decode( b64.charAt( i + 3 ) )
-						push( ( tmp & 0xFF0000 ) >> 16 )
-						push( ( tmp & 0xFF00 ) >> 8 )
+                        tmp = ( decode(b64.charAt(i)) << 18 ) | ( decode(b64.charAt(i + 1)) << 12 ) | ( decode(b64.charAt(i + 2)) << 6 ) | decode(b64.charAt(i + 3));
+                        push(( tmp & 0xFF0000 ) >> 16);
+                        push(( tmp & 0xFF00 ) >> 8);
 						push( tmp & 0xFF )
 					}
 
 					if ( placeHolders === 2 ) {
-						tmp = ( decode( b64.charAt( i ) ) << 2 ) | ( decode( b64.charAt( i + 1 ) ) >> 4 )
+                        tmp = ( decode(b64.charAt(i)) << 2 ) | ( decode(b64.charAt(i + 1)) >> 4 );
 						push( tmp & 0xFF )
 					} else if ( placeHolders === 1 ) {
-						tmp = ( decode( b64.charAt( i ) ) << 10 ) | ( decode( b64.charAt( i + 1 ) ) << 4 ) | ( decode( b64.charAt( i + 2 ) ) >> 2 )
-						push( ( tmp >> 8 ) & 0xFF )
+                        tmp = ( decode(b64.charAt(i)) << 10 ) | ( decode(b64.charAt(i + 1)) << 4 ) | ( decode(b64.charAt(i + 2)) >> 2 );
+                        push(( tmp >> 8 ) & 0xFF);
 						push( tmp & 0xFF )
 					}
 
@@ -2201,7 +2201,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 						for ( i1 = 0; i1 < _this.setup.chart.mainDataSet.fieldMappings.length; i1++ ) {
 							var fieldMap = _this.setup.chart.mainDataSet.fieldMappings[ i1 ];
 							for ( i2 = 0; i2 < _this.setup.chart.panels.length; i2++ ) {
-								var panel = _this.setup.chart.panels[ i2 ]
+                                var panel = _this.setup.chart.panels[i2];
 								for ( i3 = 0; i3 < panel.stockGraphs.length; i3++ ) {
 									var graph = panel.stockGraphs[ i3 ];
 
@@ -2466,7 +2466,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 							for ( i2 = 0; i2 < items.length; i2++ ) {
 								var tmp = {
 									"label": items[ i2 ]
-								}
+                                };
 
 								if ( type == "shapes" ) {
 									var io = items[ i2 ].indexOf( "//" ) == -1;
@@ -2631,7 +2631,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 							a: a,
 							img: img,
 							span: span
-						}
+                        };
 
 						// ADD SUBLIST; JUST WITH ENTRIES
 						if ( ( item.menu || item.items ) && item.action != "draw" ) {
@@ -2965,7 +2965,7 @@ if ( !AmCharts.translations[ "export" ][ "en" ] ) {
 					_this.init();
 				}
 			}
-		}
+        };
 
 		// USE GIVEN CONFIG
 		if ( config ) {

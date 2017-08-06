@@ -3,7 +3,7 @@ var ComponentsBootstrapMaxlength = function () {
     var handleBootstrapMaxlength = function() {
         $('#maxlength_defaultconfig').maxlength({
             limitReachedClass: "label label-danger",
-        })
+        });
     
         $('#maxlength_thresholdconfig').maxlength({
             limitReachedClass: "label label-danger",
@@ -30,7 +30,7 @@ var ComponentsBootstrapMaxlength = function () {
             alwaysShow: true,
             placement: App.isRTL() ? 'top-right' : 'top-left'
         });
-    }
+    };
 
     return {
         //main function to initiate the module

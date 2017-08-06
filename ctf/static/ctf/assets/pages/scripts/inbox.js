@@ -47,7 +47,7 @@ var AppInbox = function () {
                 $(this).attr("checked", checked);
             });
         });
-    }
+    };
 
     var loadMessage = function (el, name, resetMenu) {
         var url = 'app_inbox_view.html';
@@ -83,13 +83,13 @@ var AppInbox = function () {
             },
             async: false
         });
-    }
+    };
 
     var initWysihtml5 = function () {
         $('.inbox-wysihtml5').wysihtml5({
             "stylesheets": ["../assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
         });
-    }
+    };
 
     var initFileupload = function () {
 
@@ -112,7 +112,7 @@ var AppInbox = function () {
                     .appendTo('#fileupload');
             });
         }
-    }
+    };
 
     var loadCompose = function (el) {
         var url = 'app_inbox_compose.html';
@@ -150,7 +150,7 @@ var AppInbox = function () {
             },
             async: false
         });
-    }
+    };
 
     var loadReply = function (el) {
         var messageid = $(el).attr("data-messageid");
@@ -190,7 +190,7 @@ var AppInbox = function () {
             },
             async: false
         });
-    }
+    };
 
     var loadSearchResults = function (el) {
         var url = 'app_inbox_inbox.html';
@@ -222,7 +222,7 @@ var AppInbox = function () {
             },
             async: false
         });
-    }
+    };
 
     var handleCCInput = function () {
         var the = $('.inbox-compose .mail-to .inbox-cc');
@@ -233,7 +233,7 @@ var AppInbox = function () {
             input.hide();
             the.show();
         });
-    }
+    };
 
     var handleBCCInput = function () {
 
@@ -245,7 +245,7 @@ var AppInbox = function () {
             input.hide();
             the.show();
         });
-    }
+    };
 
     var toggleButton = function(el) {
         if (typeof el == 'undefined') {
@@ -256,7 +256,7 @@ var AppInbox = function () {
         } else {
             el.attr("disabled", true);
         }
-    }
+    };
 
     return {
         //main function to initiate the module

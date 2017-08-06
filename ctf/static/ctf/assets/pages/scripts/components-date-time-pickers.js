@@ -17,7 +17,7 @@ var ComponentsDateTimePickers = function () {
         $( document ).scroll(function(){
             $('#form_modal2 .date-picker').datepicker('place'); //#modal is the id of the modal
         });
-    }
+    };
 
     var handleTimePickers = function () {
 
@@ -52,7 +52,7 @@ var ComponentsDateTimePickers = function () {
                 $('#form_modal4 .timepicker-default, #form_modal4 .timepicker-no-seconds, #form_modal4 .timepicker-24').timepicker('place'); //#modal is the id of the modal
             });
         }
-    }
+    };
 
     var handleDateRangePickers = function () {
         if (!jQuery().daterangepicker) {
@@ -146,7 +146,7 @@ var ComponentsDateTimePickers = function () {
         );
         //Set the initial state of the picker label
         $('#reportrange span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-    }
+    };
 
     var handleDatetimePicker = function () {
 
@@ -186,7 +186,7 @@ var ComponentsDateTimePickers = function () {
         $( document ).scroll(function(){
             $('#form_modal1 .form_datetime, #form_modal1 .form_advance_datetime, #form_modal1 .form_meridian_datetime').datetimepicker('place'); //#modal is the id of the modal
         });
-    }
+    };
 
     var handleClockfaceTimePickers = function () {
 
@@ -224,7 +224,7 @@ var ComponentsDateTimePickers = function () {
         $( document ).scroll(function(){
             $('#form_modal5 .clockface_1, #form_modal5 #clockface_2_modal').clockface('place'); //#modal is the id of the modal
         });
-    }
+    };
 
     return {
         //main function to initiate the module

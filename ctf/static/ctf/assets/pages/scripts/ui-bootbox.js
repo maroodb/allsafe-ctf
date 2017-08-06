@@ -63,7 +63,7 @@ var UIBootbox = function () {
             });
             //end #demo_7
 
-    }
+    };
 
     return {
 

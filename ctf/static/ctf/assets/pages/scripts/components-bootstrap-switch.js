@@ -16,7 +16,7 @@ var ComponentsBootstrapSwitch = function () {
             $('.switch-radio1').bootstrapSwitch('toggleRadioStateAllowUncheck', false);
         });
 
-    }
+    };
 
     return {
         //main function to initiate the module

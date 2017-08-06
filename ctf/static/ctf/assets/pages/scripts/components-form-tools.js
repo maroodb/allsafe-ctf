@@ -3,7 +3,7 @@ var ComponentsFormTools = function () {
     var handleBootstrapMaxlength = function() {
         $('#maxlength_defaultconfig').maxlength({
             limitReachedClass: "label label-danger",
-        })
+        });
     
         $('#maxlength_thresholdconfig').maxlength({
             limitReachedClass: "label label-danger",
@@ -30,7 +30,7 @@ var ComponentsFormTools = function () {
             alwaysShow: true,
             placement: App.isRTL() ? 'top-right' : 'top-left'
         });
-    }
+    };
     
     var handlePasswordStrengthChecker = function () {
         var initialized = false;
@@ -55,7 +55,7 @@ var ComponentsFormTools = function () {
                 initialized = true;
             }
         });
-    }
+    };
 
     var handleUsernameAvailabilityChecker1 = function () {
         var input = $("#username1_input");
@@ -130,7 +130,7 @@ var ComponentsFormTools = function () {
             }, 'json');
 
         });
-    }
+    };
 
     var handleUsernameAvailabilityChecker2 = function () {
         $("#username2_input").change(function () {
@@ -181,7 +181,7 @@ var ComponentsFormTools = function () {
             }, 'json');
 
         });
-    }
+    };
 
     return {
         //main function to initiate the module

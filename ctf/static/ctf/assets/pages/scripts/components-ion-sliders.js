@@ -90,7 +90,7 @@ var ComponentsIonSliders = function() {
             postfix: " million pounds",
             values_separator: " → "
         });
-    }
+    };
 
     var handleAdvancedDemo = function() {
         $("#range_10").ionRangeSlider({
@@ -132,7 +132,7 @@ var ComponentsIonSliders = function() {
             from: 30,
             disable: true
         });
-    }
+    };
 
     return {
         //main function to initiate the module

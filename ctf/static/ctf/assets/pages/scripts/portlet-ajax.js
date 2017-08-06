@@ -13,7 +13,7 @@ var PortletAjax = function () {
                 'container': $('#my_portlet .portlet-body') 
             });
         })
-    }
+    };
 
     return {
         //main function to initiate the module

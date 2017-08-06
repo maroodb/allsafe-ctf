@@ -160,7 +160,7 @@ var TableDatatablesEditable = function () {
                 nEditing = nRow;
             }
         });
-    }
+    };
 
     return {
 

@@ -8563,7 +8563,7 @@ wysihtml.dom.insertCSS = function(rules) {
       var link = doc.querySelector("head link");
       if (link) {
         link.parentNode.insertBefore(styleElement, link);
-        return;
+
       } else {
         var head = doc.querySelector("head");
         if (head) {
@@ -9157,9 +9157,9 @@ wysihtml.dom.parse = function(elementOrHtml_current, config_current) {
         }
       }
     }
-  };
+  }
 
-  function _getAttributesBeginningWith(beginning, attributes) {
+    function _getAttributesBeginningWith(beginning, attributes) {
     var returnAttributes = [];
     for (var attr in attributes) {
       if (attributes.hasOwnProperty(attr) && attr.indexOf(beginning) === 0) {
@@ -11808,7 +11808,7 @@ wysihtml.quirks.ensureProperClearing = (function() {
 
       var notSelected = function() {
         return !s || (s.nativeSelection && s.nativeSelection.type && (s.nativeSelection.type === "Caret" || s.nativeSelection.type === "None"));
-      }
+      };
 
       wysihtml.dom.removeInvisibleSpaces(this.composer.element);
       doSelect();
@@ -12334,7 +12334,7 @@ wysihtml.Commands = Base.extend(
           range.setEndAfter(node);
         }
       }
-      return;
+
     }
   }
   
@@ -12562,12 +12562,12 @@ wysihtml.Commands = Base.extend(
   var isWhitespaceBefore = function (textNode, offset) {
     var str = textNode.data ? textNode.data.slice(0, offset) : "";
     return (/^\s*$/).test(str);
-  }
+  };
 
   var isWhitespaceAfter = function (textNode, offset) {
     var str = textNode.data ? textNode.data.slice(offset) : "";
     return (/^\s*$/).test(str);
-  }
+  };
 
   var trimBlankTextsAndBreaks = function(fragment) {
     if (fragment) {
@@ -12587,7 +12587,7 @@ wysihtml.Commands = Base.extend(
         fragment.removeChild(fragment.lastChild);
       }
     }
-  }
+  };
 
   // Wrap the range with a block level element
   // If element is one of unnestable block elements (ex: h2 inside h1), split nodes and insert between so nesting does not occur
@@ -15167,7 +15167,7 @@ wysihtml.views.View = Base.extend(
       if (wysihtml.browser.usesControlRanges()) {
         if (actions.fixDeleteInTheBeginningOfControlSelection(composer)) {
           event.preventDefault();
-          return;
+
         }
       }
     } else {

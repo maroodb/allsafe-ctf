@@ -3185,9 +3185,9 @@ SVGRenderer.prototype = {
 		// used in text outline hack.
 		if (!hasMarkup && !textShadow && !ellipsis && textStr.indexOf(' ') === -1) {
 			textNode.appendChild(doc.createTextNode(unescapeAngleBrackets(textStr)));
-			return;
 
-		// Complex strings, add more logic
+
+            // Complex strings, add more logic
 		} else {
 
 			styleRegex = /<.*style="([^"]+)".*>/;

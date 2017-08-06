@@ -7,7 +7,7 @@ var Scrollbar = function() {
     $('.js__scrollbar').mCustomScrollbar({
       theme: 'minimal'
     });
-  }
+  };
 
 
   return {

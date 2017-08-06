@@ -13,7 +13,7 @@ var Portfolio = function() {
       displayType: 'default',
       caption: '',
     });
-  }
+  };
 
   return {
     init: function() {

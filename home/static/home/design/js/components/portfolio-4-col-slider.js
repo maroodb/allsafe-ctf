@@ -34,7 +34,7 @@ var Portfolio = function() {
       lightboxGallery: true,
       lightboxTitleSrc: 'data-title',
     });
-  }
+  };
 
   return {
     init: function() {

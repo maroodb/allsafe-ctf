@@ -20,7 +20,7 @@ var ProgressBar = function() {
         });
       });
     });
-  }
+  };
 
   return {
     init: function() {

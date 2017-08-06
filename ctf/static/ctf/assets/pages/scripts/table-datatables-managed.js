@@ -85,7 +85,7 @@ var TableDatatablesManaged = function () {
         table.on('change', 'tbody tr .checkboxes', function () {
             $(this).parents('tr').toggleClass("active");
         });
-    }
+    };
 
     var initTable1_2 = function () {
 
@@ -197,7 +197,7 @@ var TableDatatablesManaged = function () {
         table.on('change', 'tbody tr .checkboxes', function () {
             $(this).parents('tr').toggleClass("active");
         });
-    }
+    };
 
     var initTable2 = function () {
 
@@ -265,7 +265,7 @@ var TableDatatablesManaged = function () {
                 }
             });
         });
-    }
+    };
 
     var initTable3 = function () {
 
@@ -333,7 +333,7 @@ var TableDatatablesManaged = function () {
                 }
             });
         });
-    }
+    };
 
     var initTable4 = function () {
 
@@ -402,7 +402,7 @@ var TableDatatablesManaged = function () {
                 }
             });
         });
-    }
+    };
 
     var initTable5 = function () {
 
@@ -503,7 +503,7 @@ var TableDatatablesManaged = function () {
                 }
             });
         });
-    }
+    };
 
     return {
 

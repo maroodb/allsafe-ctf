@@ -60,7 +60,7 @@ var ComponentsBootstrapTouchSpin = function() {
             buttonup_class: "btn red"
         });
 
-    }
+    };
 
     return {
         //main function to initiate the module

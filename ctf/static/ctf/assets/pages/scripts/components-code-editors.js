@@ -9,7 +9,7 @@ var ComponentsCodeEditors = function () {
             theme:"ambiance",
             mode: 'javascript'
         });
-    }
+    };
 
     var handleDemo2 = function () {
         var myTextArea = document.getElementById('code_editor_demo_2');
@@ -20,7 +20,7 @@ var ComponentsCodeEditors = function () {
             theme:"material",
             mode: 'css'
         });
-    }
+    };
 
     var handleDemo3 = function () {
         var myTextArea = document.getElementById('code_editor_demo_3');
@@ -32,7 +32,7 @@ var ComponentsCodeEditors = function () {
             mode: 'javascript',
             readOnly: true
         });
-    }
+    };
 
     var handleDemo4 = function () {
         var myTextArea = document.getElementById('code_editor_demo_4');
@@ -44,7 +44,7 @@ var ComponentsCodeEditors = function () {
             mode: 'css',
             readOnly: true
         });
-    }
+    };
 
 
     return {

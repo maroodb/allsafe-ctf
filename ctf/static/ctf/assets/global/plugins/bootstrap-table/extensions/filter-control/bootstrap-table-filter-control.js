@@ -134,7 +134,7 @@
                         break;
                     case 'select':
                         html.push(sprintf('<select class="%s form-control" style="width: 100%; visibility: %s"></select>',
-                            column.field, isVisible))
+                            column.field, isVisible));
                         break;
                     case 'datepicker':
                         html.push(sprintf('<input type="text" class="date-filter-control %s form-control" style="width: 100%; visibility: %s">',
@@ -387,7 +387,7 @@
                         (value + '').toLowerCase().indexOf(fval) !== -1)) {
                         return false;
                     }
-                };
+                }
             }
             return true;
         }) : this.data;
@@ -396,7 +396,7 @@
     BootstrapTable.prototype.onColumnSearch = function (event) {
         copyValues(this);
         var text = $.trim($(event.currentTarget).val());
-        var $field = $(event.currentTarget).parent().parent().parent().data('field')
+        var $field = $(event.currentTarget).parent().parent().parent().data('field');
 
         if ($.isEmptyObject(this.filterColumnsPartial)) {
             this.filterColumnsPartial = {};

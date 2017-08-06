@@ -59,7 +59,7 @@ var MagnificPopup = function() {
         fixedContentPos: true
       });
     });
-  }
+  };
 
   return {
     init: function() {

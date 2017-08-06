@@ -112,7 +112,7 @@ var EcommerceDashboard = function() {
             }
         });
 
-    }
+    };
 
     var initChart2 = function() {
 
@@ -214,7 +214,7 @@ var EcommerceDashboard = function() {
             }
         });
 
-    }
+    };
 
     return {
 

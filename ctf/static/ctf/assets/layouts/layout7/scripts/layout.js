@@ -47,7 +47,7 @@ var Layout = function() {
         trigger.click(function() {
             var removeModal = function() {
                 modal.removeClass('menu-overlay-show');
-            }
+            };
 
             modal.addClass('menu-overlay-show');
             overlay.off('click', removeModal);

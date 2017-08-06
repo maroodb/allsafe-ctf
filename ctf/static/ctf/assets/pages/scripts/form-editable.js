@@ -33,7 +33,7 @@ var FormEditable = function() {
         }
         s.push('--------------------------------------\n');
         $('#console').val(s.join('\n') + $('#console').val());
-    }
+    };
 
     var initAjaxMock = function() {
         //ajax mocks
@@ -90,7 +90,7 @@ var FormEditable = function() {
             }
         });
 
-    }
+    };
 
     var initEditables = function() {
 
@@ -521,7 +521,7 @@ var FormEditable = function() {
                 $(this).html(html);
             }
         });
-    }
+    };
 
     return {
         //main function to initiate the module

@@ -16,4 +16,4 @@ var Search = function () {
 
 jQuery(document).ready(function() {
     Search.init();
-})
+});

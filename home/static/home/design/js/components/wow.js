@@ -8,7 +8,7 @@ var Wow = function() {
       mobile: false
   	});
   	wow.init();
-  }
+  };
 
   return {
     init: function() {

@@ -59,7 +59,7 @@ var TableDatatablesButtons = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         });
-    }
+    };
 
     var initTable2 = function () {
         var table = $('#sample_2');
@@ -120,7 +120,7 @@ var TableDatatablesButtons = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         });
-    }
+    };
 
     var initTable3 = function () {
         var table = $('#sample_3');
@@ -186,7 +186,7 @@ var TableDatatablesButtons = function () {
             var action = $(this).attr('data-action');
             oTable.DataTable().button(action).trigger();
         });
-    }
+    };
 
     var initAjaxDatatables = function () {
 
@@ -296,7 +296,7 @@ var TableDatatablesButtons = function () {
             var action = $(this).attr('data-action');
             grid.getDataTable().button(action).trigger();
         });
-    }
+    };
 
     return {
 

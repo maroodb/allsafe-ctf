@@ -17,7 +17,7 @@ var HeaderSticky = function() {
         $('.js__header-sticky').removeClass('s-header__shrink');
       }
     });
-  }
+  };
 
   return {
     init: function() {

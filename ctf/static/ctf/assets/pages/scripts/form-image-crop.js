@@ -2,7 +2,7 @@ var FormImageCrop = function () {
 
     var demo1 = function() {
         $('#demo1').Jcrop();
-    }
+    };
 
     var demo2 = function() {
         var jcrop_api;
@@ -33,13 +33,12 @@ var FormImageCrop = function () {
             $('#y2').val(c.y2);
             $('#w').val(c.w);
             $('#h').val(c.h);
-        };
-
+        }
         function clearCoords()
         {
             $('#coords input').val('');
-        };
-    }
+        }
+    };
 
     var demo3 = function() {
         // Create variables (in this scope) to hold the API and image size
@@ -85,8 +84,8 @@ var FormImageCrop = function () {
               marginTop: '-' + Math.round(ry * c.y) + 'px'
             });
           }
-        };
-    }
+        }
+    };
 
     var demo4 = function() {
         var jcrop_api;
@@ -201,7 +200,7 @@ var FormImageCrop = function () {
               '<div class="btn-toolbar"><div class="btn-group"></div></div>'
             )
           );
-        };
+        }
         // Handler for option-setting buttons
         function setoptHandler(k,v) {
           return function(e) {
@@ -212,7 +211,7 @@ var FormImageCrop = function () {
             jcrop_api.setOptions(opt);
             return false;
           };
-        };
+        }
         // Handler for animation buttons
         function animHandler(v) {
           return function(e) {
@@ -222,11 +221,10 @@ var FormImageCrop = function () {
             });
             return false;
           };
-        };
-
+        }
         $('#bgo_buttons .btn:first,#bgc_buttons .btn:last').addClass('active');
         $('#interface').show();
-    }
+    };
 
     var demo5 = function() {
         // The variable jcrop_api will hold a reference to the
@@ -261,7 +259,7 @@ var FormImageCrop = function () {
 
           });
 
-        };
+        }
         //}}}
 
         // Use the API to find cropping dimensions
@@ -276,8 +274,7 @@ var FormImageCrop = function () {
             Math.round(Math.random() * dim[0]),
             Math.round(Math.random() * dim[1])
           ];
-        };
-
+        }
         // This function is bound to the onRelease handler...
         // In certain circumstances (such as if you set minSize
         // and aspectRatio together), you can inadvertently lose
@@ -289,8 +286,7 @@ var FormImageCrop = function () {
         {
           jcrop_api.setOptions({ allowSelect: true });
           $('#can_click').attr('checked',false);
-        };
-
+        }
         // Attach interface buttons
         // This may appear to be a lot of code but it's simple stuff
         $('#setSelect').click(function(e) {
@@ -401,7 +397,7 @@ var FormImageCrop = function () {
           jcrop_api.focus();
         });
 
-    }
+    };
 
     var demo6 = function() {
         var api;
@@ -447,7 +443,7 @@ var FormImageCrop = function () {
             else api.ui.holder.removeClass(c);
           });
         });
-    }
+    };
 
     var demo7 = function() {
         // I did JSON.stringify(jcrop_api.tellSelect()) on a crop I liked:
@@ -457,7 +453,7 @@ var FormImageCrop = function () {
           bgFade: true,
           setSelect: [c.x,c.y,c.x2,c.y2]
         });
-    }
+    };
 
     var demo8 = function() {
         $('#demo8').Jcrop({
@@ -471,15 +467,15 @@ var FormImageCrop = function () {
             $('#crop_y').val(c.y);
             $('#crop_w').val(c.w);
             $('#crop_h').val(c.h);
-          };
+          }
 
-          $('#demo8_form').submit(function(){
+        $('#demo8_form').submit(function () {
             if (parseInt($('#crop_w').val())) return true;
             alert('Please select a crop region then press submit.');
             return false;
             });
 
-    }
+    };
 
     var handleResponsive = function() {
       if ($(window).width() <= 1024 && $(window).width() >= 678) {
@@ -495,13 +491,13 @@ var FormImageCrop = function () {
           }
         });
       }
-    }
+    };
 
     return {
         //main function to initiate the module
         init: function () {
-            
-            if (!jQuery().Jcrop) {;
+
+            if (!jQuery().Jcrop) {
                 return;
             }
 

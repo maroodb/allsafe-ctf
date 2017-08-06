@@ -7,8 +7,8 @@ var ChartsFlowchart = function() {
     	flow += 'st=>start: Start:>http://keenthemes.com[blank]' + "\n";
 		flow += 'e=>end:>http://keenthemes.com' + "\n";
 		flow += 'op1=>operation: My Operation' + "\n";
-		flow += 'sub1=>subroutine: My Subroutine' + "\n";;
-		flow += 'cond=>condition: Yes' + "\n";
+        flow += 'sub1=>subroutine: My Subroutine' + "\n";
+        flow += 'cond=>condition: Yes' + "\n";
 		flow += 'or No?:>http://keenthemes.com' + "\n";
 		flow += 'io=>inputoutput: catch something...' + "\n";
 		flow += 'st->op1->cond' + "\n";
@@ -77,7 +77,7 @@ var ChartsFlowchart = function() {
                 }
             }
         });
-    }
+    };
 
     var handleDemo2 = function() {
 
@@ -161,7 +161,7 @@ var ChartsFlowchart = function() {
                 }
             }
         });
-    }
+    };
 
     return {
 

@@ -359,8 +359,8 @@ jQuery.fn.gantt = function (options) {
 		};
 		this.parseDateRange = function(from, to) {
 			var current = new Date(from.getTime());
-			var end =  new Date(to.getTime());;
-			var ret = new Array();
+            var end = new Date(to.getTime());
+            var ret = [];
 			var i = 0;
 			do {
 				ret[i++] = new Date(current.getTime());

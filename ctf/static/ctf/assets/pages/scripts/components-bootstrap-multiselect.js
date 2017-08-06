@@ -17,13 +17,13 @@ var ComponentsBootstrapMultiselect = function () {
         		// advanced functions
         		var onchange_function = function(option, checked, select) {
 	                alert('Changed option ' + $(option).val() + '.');
-	            }
+                };
 	            var dropdownshow_function = function(event) {
 	                alert('Dropdown shown.');
-	            }
+                };
 	            var dropdownhide_function = function(event) {
 	                alert('Dropdown Hidden.');
-	            }
+                };
 
 	            // init advanced functions
 	            var onchange = ($(this).data('action-onchange') == true) ? onchange_function : '';

@@ -197,7 +197,7 @@ jQuery(document).ready(function($){
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false,
     styles: style,
-  }
+  };
 
   //inizialize the map
   var map = new google.maps.Map(document.getElementById('js__google-container'), map_options);

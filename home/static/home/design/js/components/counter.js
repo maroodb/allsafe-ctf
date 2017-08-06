@@ -5,7 +5,7 @@ var Counter = function() {
   // Handle Counter
   var handleCounter = function() {
     $('.js__counter').counterUp();
-  }
+  };
 
   return {
     init: function() {

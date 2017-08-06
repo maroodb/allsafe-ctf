@@ -8,7 +8,7 @@ var ComponentsColorPickers = function() {
             format: 'hex'
         });
         $('.colorpicker-rgba').colorpicker();
-    }
+    };
 
     var handleMiniColors = function() {
         $('.demo').each(function() {
@@ -39,7 +39,7 @@ var ComponentsColorPickers = function() {
             });
 
         });
-    }
+    };
 
     return {
         //main function to initiate the module

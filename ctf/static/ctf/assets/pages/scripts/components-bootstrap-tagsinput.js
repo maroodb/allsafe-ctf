@@ -21,7 +21,7 @@ var ComponentsBootstrapTagsinput = function() {
         elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
         elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
         elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
-    }
+    };
 
     var handleDemo2 = function() {
 
@@ -79,7 +79,7 @@ var ComponentsBootstrapTagsinput = function() {
             "text": "Cairo",
             "continent": "Africa"
         });
-    }
+    };
 
     var handleDemo3 = function() {
         var citynames = new Bloodhound({
@@ -105,7 +105,7 @@ var ComponentsBootstrapTagsinput = function() {
                 source: citynames.ttAdapter()
             }
         });
-    }
+    };
 
     return {
         //main function to initiate the module

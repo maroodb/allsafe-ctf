@@ -2,8 +2,8 @@ var UIButtons = function () {
 
     var handleButtons = function () {
         $('.demo-loading-btn').click(function () {
-            var btn = $(this)
-            btn.button('loading')
+            var btn = $(this);
+            btn.button('loading');
             setTimeout(function () {
                 btn.button('reset')
             }, 3000)
@@ -24,7 +24,7 @@ var UIButtons = function () {
                     }, 200 );
                 }
             } );
-    }
+    };
 
     return {
         //main function to initiate the module

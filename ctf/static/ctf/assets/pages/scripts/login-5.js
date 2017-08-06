@@ -77,7 +77,7 @@ var Login = function() {
             $('.login-form').show();
             $('.forget-form').hide();
         });
-    }
+    };
 
  
   

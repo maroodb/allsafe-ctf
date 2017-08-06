@@ -6,7 +6,7 @@ var EcommerceOrders = function () {
             rtl: App.isRTL(),
             autoclose: true
         });
-    }
+    };
 
     var handleOrders = function () {
 
@@ -70,7 +70,7 @@ var EcommerceOrders = function () {
             }
         });
 
-    }
+    };
 
     return {
 

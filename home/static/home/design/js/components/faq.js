@@ -15,7 +15,7 @@ var Portfolio = function() {
         gapHorizontal: 0,
         gapVertical: 0
     });
-  }
+  };
 
   return {
     init: function() {

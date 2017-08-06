@@ -14,7 +14,7 @@ var UIAlertsApi = function () {
                 icon: $('#alert_icon').val() // put icon before the message
             });
         });
-    }
+    };
 
     var handleCode = function() {
         var myTextArea = document.getElementById('code_editor_demo');
@@ -29,7 +29,7 @@ var UIAlertsApi = function () {
             inputStyle: 'textarea',
             theme: 'neo'
         });
-    }
+    };
 
     return {
 

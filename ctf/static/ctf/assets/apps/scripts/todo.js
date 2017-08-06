@@ -18,7 +18,7 @@ var AppTodo = function () {
         $(".todo-taskbody-tags").select2({
             tags: ["Testing", "Important", "Info", "Pending", "Completed", "Requested", "Approved"]
         });
-    }
+    };
 
     var _handleProjectListMenu = function() {
         if (App.getViewPort().width <= 992) {
@@ -26,7 +26,7 @@ var AppTodo = function () {
         } else {
             $('.todo-project-list-content').removeClass("collapse").css("height", "auto");
         }
-    }
+    };
 
     // public functions
     return {

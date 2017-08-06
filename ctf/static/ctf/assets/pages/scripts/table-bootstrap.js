@@ -8,7 +8,7 @@ var BootstrapTable = function () {
         $('#destroy').click(function () {
             $table_transform.bootstrapTable('destroy');
         });
-    }
+    };
 
     var TableStyle = function () {
         var $table_style = $('#table-style');
@@ -40,7 +40,7 @@ var BootstrapTable = function () {
             }
             return {};
         }
-    }
+    };
 
     return {
 

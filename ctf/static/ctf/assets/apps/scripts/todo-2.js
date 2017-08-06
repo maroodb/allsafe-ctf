@@ -18,7 +18,7 @@ var AppTodo2 = function () {
         $(".todo-taskbody-tags").select2({
             placeholder: 'Status'
         });
-    }
+    };
 
     var _handleProjectListMenu = function() {
         if (App.getViewPort().width <= 992) {
@@ -26,7 +26,7 @@ var AppTodo2 = function () {
         } else {
             $('.todo-project-list-content').removeClass("collapse").css("height", "auto");
         }
-    }
+    };
 
     // public functions
     return {

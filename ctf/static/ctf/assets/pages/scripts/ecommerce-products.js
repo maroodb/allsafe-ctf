@@ -6,7 +6,7 @@ var EcommerceProducts = function () {
             rtl: App.isRTL(),
             autoclose: true
         });
-    }
+    };
 
     var handleProducts = function() {
         var grid = new Datatable();
@@ -69,7 +69,7 @@ var EcommerceProducts = function () {
                 });
             }
         });
-    }
+    };
 
     return {
 

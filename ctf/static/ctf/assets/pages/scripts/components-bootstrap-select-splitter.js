@@ -10,7 +10,7 @@ var ComponentsBootstrapSelectSplitter = function() {
         $('#select_selectsplitter3').selectsplitter({
             selectSize: 5
         });
-    }
+    };
 
     return {
         //main function to initiate the module

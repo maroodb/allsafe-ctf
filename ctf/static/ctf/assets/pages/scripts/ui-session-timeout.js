@@ -13,7 +13,7 @@ var SessionTimeout = function () {
             countdownMessage: 'Redirecting in {timer} seconds.',
             countdownBar: true
         });
-    }
+    };
 
     return {
         //main function to initiate the module

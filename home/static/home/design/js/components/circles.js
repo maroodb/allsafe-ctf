@@ -59,7 +59,7 @@ var Circle = function() {
       colors: ['rgba(16,122,118,.2)', '#13b1cd'],
       duration: 1500
     });
-  }
+  };
 
   return {
     init: function() {

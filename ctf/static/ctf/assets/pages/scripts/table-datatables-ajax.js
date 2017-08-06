@@ -6,7 +6,7 @@ var TableDatatablesAjax = function () {
             rtl: App.isRTL(),
             autoclose: true
         });
-    }
+    };
 
     var handleDemo1 = function () {
 
@@ -104,7 +104,7 @@ var TableDatatablesAjax = function () {
         //grid.setAjaxParam("customActionType", "group_action");
         //grid.getDataTable().ajax.reload();
         //grid.clearAjaxParams();
-    }
+    };
 
     var handleDemo2 = function () {
 
@@ -214,7 +214,7 @@ var TableDatatablesAjax = function () {
         //grid.setAjaxParam("customActionType", "group_action");
         //grid.getDataTable().ajax.reload();
         //grid.clearAjaxParams();
-    }
+    };
 
     return {
 

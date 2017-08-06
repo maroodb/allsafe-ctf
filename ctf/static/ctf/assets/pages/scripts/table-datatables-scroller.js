@@ -57,7 +57,7 @@ var TableDatatablesScroller = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         });
-    }
+    };
 
     var initTable2 = function () {
         var table = $('#sample_2');
@@ -117,7 +117,7 @@ var TableDatatablesScroller = function () {
 
             "dom": "<'row' <'col-md-12'B>><'table-scrollable't><'row'<'col-md-12'i>>"
         });
-    }
+    };
 
     var initTable3 = function () {
         var table = $('#sample_3');
@@ -179,7 +179,7 @@ var TableDatatablesScroller = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         });
-    }
+    };
 
     var initTable4 = function () {
         var table = $('#sample_4');
@@ -239,7 +239,7 @@ var TableDatatablesScroller = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         });
-    }
+    };
 
     return {
 
