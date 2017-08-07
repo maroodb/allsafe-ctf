@@ -112,7 +112,7 @@ def signup(request):
 
         url = 'https://www.google.com/recaptcha/api/siteverify'
         data = {
-            'secret': '6LcxfiEUAAAAANAbaIof6VfqxYLDWvGdvPEIkC_M',
+            'secret': '6LdCnhUUAAAAACehzbK9SI9maF9Yfs9KsLfRlytN',
             'response': valcaptcha,
         }
 
@@ -206,3 +206,4 @@ def validate_username(request):
     if data['is_taken']:
         data['error_message'] = 'A user with this username (' + username + ') already exists'
     return JsonResponse(data)
+

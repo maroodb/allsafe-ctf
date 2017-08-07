@@ -245,7 +245,6 @@ Markdown.prototype.toTree = function toTree( source, custom_root ) {
   try {
     this.tree = custom_root || this.tree || [ "markdown" ];
 
-    blocks:
     while ( blocks.length ) {
       var b = this.processBlock( blocks.shift(), blocks );
 
@@ -344,7 +343,6 @@ Markdown.dialects.Gruber = {
       // 4 spaces + content
       if ( !block.match( re ) ) return undefined;
 
-      block_search:
       do {
         // Now pull out the rest of the lines
         var b = this.loop_re_over_block(
@@ -526,7 +524,6 @@ Markdown.dialects.Gruber = {
             i;
 
         // Loop to search over block looking for inner block elements and loose lists
-        loose_search:
         while( true ) {
           // Split into lines preserving new lines at end of line
           var lines = block.split( /(?=\n)/ );

@@ -80,13 +80,7 @@ socket.on('update_your_list', function (listOfMessages) {
         var msgDate = new Date(parseInt(key));
         var messageFromDataBase = listOfMessages[key] ;
         messageFromDataBase.date = msgDate;
-       /* var messageFromDataBase = {
-            "username": listOfMessages[key].username,
-            "avatar": listOfMessages[key].avatar,
-            "text": listOfMessages[key].text,
-            "date": msgDate
-        } ;
-       */
+
         appendChatElement(messageFromDataBase);
 
     });

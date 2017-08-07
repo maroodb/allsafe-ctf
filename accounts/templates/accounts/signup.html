@@ -193,7 +193,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="g-recaptcha" data-sitekey="6LcxfiEUAAAAAHJpu-CZ3OzYnqPkBIYzwvxSbIHe"></div>
+                    <div class="g-recaptcha" data-sitekey="6LdCnhUUAAAAAK0rxFaSgfQpznilU43_ghRYajQV"></div>
                 </div>
                 <div class="col-md-12">
                     {% if post %}
@@ -207,7 +207,8 @@
                         {% if not received and success %}
                             <div class="alert alert-warning">
                                 <strong>Warning!</strong> Something gone wrong, please try again.<br>
-                                <strong>NOTE</strong>Username doesn't accept spaces. and password must contains at least 8 characters.
+                                <strong>NOTE</strong>Username doesn't accept spaces. and password must contains at least
+                                8 characters.
                             </div>
                         {% endif %}
                         {% if not success %}
@@ -337,34 +338,32 @@
 <!--========== END JAVASCRIPTS ==========-->
 
 
-
-    <script>
+<script>
     $("#id_username").change(function () {
-      var username = $(this).val();
-      var input = $(this);
+        var username = $(this).val();
+        var input = $(this);
 
-      $.ajax({
-        url: '{% url "validate_username" %}',
-        data: {
-          'username': username
-        },
-        dataType: 'json',
-        success: function (data) {
-          if (data.is_taken) {
+        $.ajax({
+            url: '{% url "validate_username" %}',
+            data: {
+                'username': username
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.is_taken) {
 
-             input.val(data.error_message+" ..") ;
-             input.attr("style", "color: red;");
+                    input.val(data.error_message + " ..");
+                    input.attr("style", "color: red;");
 
-          }
-          else {
-              input.attr("style", "color: green;");
-          }
-        }
-      });
+                }
+                else {
+                    input.attr("style", "color: green;");
+                }
+            }
+        });
 
     });
-  </script>
-
+</script>
 
 
 </body>
