@@ -25,7 +25,13 @@ function creatChatElement(data, type_of_msg) {
     spandate.text(" at " + time);
     spandate.attr("class", "datetime");
     divmsg.attr("class", "message");
-    img.attr("src", "http://" + host + ":8000" + data.avatar);
+    if (host == "127.0.0.1"){
+        img.attr("src", "http://" + host + ":8000" + data.avatar);
+    }
+    else {
+        img.attr("src", "http://" +host+ data.avatar);
+    }
+
     img.attr("class", "avatar");
 
 
@@ -50,7 +56,6 @@ function appendChatElement(message) {
 
 var username = $("#username");
 var avatar = $("#avatar");
-alert("mememem");
 var socket = io.connect('http://chatroom.allsafeclub.info');
 var box = $('#chatbox');
 var queue = $("#chatlist");
