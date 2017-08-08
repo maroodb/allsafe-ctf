@@ -15,3 +15,14 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Award(models.Model):
+    title = models.CharField(max_length=120)
+    position = models.CharField(max_length=100)
+    description = models.TextField(max_length=2000)
+    image = models.ImageField(upload_to='awards/')
+
+    def __str__(self):
+        return self.title
+

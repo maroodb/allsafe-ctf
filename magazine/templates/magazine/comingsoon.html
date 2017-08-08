@@ -23,7 +23,7 @@
     <!-- Theme Styles -->
     <link href="{% static 'home/design/css/style.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'home/design/css/global/global.css' %}" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -81,12 +81,18 @@
                             href="/">Home</a></li>
 
                     {% if user.is_authenticated %}
-                       <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="account/dashboard"><u>Hello {{ user }}</u></a></li>
+                        <li class="s-header__nav-menu-item"><a
+                                class="s-header__nav-menu-link s-header__nav-menu-link-divider"
+                                href="account/dashboard"><u>Hello {{ user }}</u></a></li>
                     {% else %}
 
-                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="account/signup">Join Us</a></li>
-                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="account/login">Sign in</a>
-                    </li>
+                        <li class="s-header__nav-menu-item"><a
+                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="account/signup">Join
+                            Us</a></li>
+                        <li class="s-header__nav-menu-item"><a
+                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="account/login">Sign
+                            in</a>
+                        </li>
                     {% endif %}
 
                     <li class="s-header__nav-menu-item"><a
@@ -154,22 +160,24 @@
 <!--========== END HEADER ==========-->
 
 <!--========== PAGE CONTENT ==========-->
-<div class="g-bg-position--center g-fullheight--xs" style="background: url('{% static 'home/design/img/1920x1080/08.jpg' %}');">
+<div class="g-bg-position--center g-fullheight--xs"
+     style="background: url('{% static 'home/design/img/1920x1080/08.jpg' %}');">
     <div class="container js__ver-center-aligned">
         <div class="g-text-center--xs">
             <div class="g-margin-t-40--xs g-margin-b-60--xs g-margin-b-80--sm">
-                <h1 class="g-font-size-32--xs g-font-size-50--sm g-font-size-60--md g-margin-b-30--xs">Website Coming
+                <h1 class="g-font-size-32--xs g-font-size-50--sm g-font-size-60--md g-margin-b-30--xs">Our Magazine Coming
                     Soon</h1>
                 <p class="text-uppercase g-font-size-20--md g-font-weight--300">Be the first to know when we launch</p>
             </div>
-            <form>
+            <form id="newslettre_form" method="post" action=".">
+                {% csrf_token %}
                 <div class="row g-margin-b-80--xs">
                     <div class="col-sm-4 col-sm-offset-2 col-xs-6 g-full-width--xs g-margin-b-30--xs g-margin-b-0--md">
                         <div class="input-group">
                                     <span class="input-group-btn">
                                         <i class="s-form-v4__icon ti-user"></i>
                                     </span>
-                            <input type="text" class="form-control s-form-v4__input" placeholder="Your Name">
+                            {{ newslettre_form.name }}
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-6 g-full-width--xs">
@@ -177,9 +185,24 @@
                                     <span class="input-group-btn">
                                         <i class="s-form-v4__icon ti-email"></i>
                                     </span>
-                            <input type="email" class="form-control s-form-v4__input" placeholder="Your Email">
+                            {{ newslettre_form.email }}
                         </div>
                     </div>
+                </div>
+                <div hidden  id="load_spinner">
+                    <p>
+                         <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                    <p>Please wait ..</p>
+                    </p>
+
+                </div>
+                <div  hidden id="with_success" class="alert alert-success"
+                     style="background-color: transparent; border: transparent;">
+                    <strong>Success!</strong>Your feedback has been submitted successfully.
+                </div>
+                <div hidden id="with_error"  class="alert alert-danger"
+                     style="background-color: transparent; border: transparent;">
+                    <strong>Error!</strong> Something gone wrong, please try again.
                 </div>
                 <button type="submit"
                         class="text-uppercase s-btn s-btn--md s-btn--dark-brd g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">
@@ -203,6 +226,7 @@
 <!-- General Components and Settings -->
 <script type="text/javascript" src="{% static 'home/design/js/global.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/js/components/scrollbar.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'magazine/assets/js/newslettre.js' %}"></script>
 <!--========== END JAVASCRIPTS ==========-->
 
 </body>

@@ -8,3 +8,5 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
 
+
+

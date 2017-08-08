@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django_ajax.decorators import ajax
 
-from blog.models import News
+from blog.models import News, Award
 from design.models import Slide
 from home.forms import ContactForm
 from home.models import Visitor, Contact
@@ -36,6 +36,7 @@ def home(request):
     members_count = members.count()
     projects_count = Project.objects.count()
     visitors_count = Visitor.objects.count()
+    awards_count = Award.objects.count()
     return render(request, "home/index.html", locals())
 
 
