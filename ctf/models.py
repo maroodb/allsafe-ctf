@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from django.core.validators import MinValueValidator
 from members.models import Member
 
 
@@ -16,7 +16,7 @@ class Challenge(models.Model):
     name = models.CharField(max_length=80)
     category = models.ForeignKey(CTFtype)
     description = models.CharField(max_length=500)
-    points = models.IntegerField()
+    points = models.PositiveIntegerField(validators=[MinValueValidator(5)])
     file = models.FileField(upload_to='ctf/challenges/', default='ctf/challenges/error.txt')
     flag = models.CharField(max_length=500)
     date = models.DateTimeField(default=timezone.now)

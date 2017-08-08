@@ -18,6 +18,7 @@ from django.utils import timezone
 @login_required
 def dashboard(request):
     user = request.user
+    members_count = Member.objects.count()
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
     return render(request, 'accounts/home.html', locals())
 
