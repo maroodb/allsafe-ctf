@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^dashboard/', dashboard),
     url(r'^myprofile/', my_profile),
     url(r'^signup/', signup),
-    url(r'^logout/', logout),
+    url(r'^logout/', deconnect),
     #url(r'^inbox/', inbox),
     url(r'^chatroom/', chatroom),
     url(r'^publish/news/', publish_news),

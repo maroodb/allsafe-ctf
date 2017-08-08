@@ -83,14 +83,14 @@
                     {% if user.is_authenticated %}
                         <li class="s-header__nav-menu-item"><a
                                 class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                                href="/account/dashboard"><u>Hello {{ user }}</u></a></li>
+                                href="/accounts/dashboard"><u>Hello {{ user }}</u></a></li>
                     {% else %}
 
                         <li class="s-header__nav-menu-item"><a
-                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/account/signup">Join
+                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/accounts/signup">Join
                             Us</a></li>
                         <li class="s-header__nav-menu-item"><a
-                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/account/login">Sign
+                                class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/accounts/login">Sign
                             in</a>
                         </li>
                     {% endif %}

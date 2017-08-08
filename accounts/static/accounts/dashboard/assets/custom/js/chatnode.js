@@ -50,6 +50,7 @@ function appendChatElement(message) {
 
 var username = $("#username");
 var avatar = $("#avatar");
+alert("mememem");
 var socket = io.connect('http://chatroom.allsafeclub.info');
 var box = $('#chatbox');
 var queue = $("#chatlist");
