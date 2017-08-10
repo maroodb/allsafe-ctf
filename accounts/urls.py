@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^chatroom/', chatroom),
     url(r'^publish/news/', publish_news),
     url(r'^ajax/validate_username/$', validate_username, name='validate_username'),
-    url(r'^members/', members),
+    url(r'^members/$', members),
+    url(r'^members/profile/(?P<id_user>\d+)$', member_profile),
 
 ]

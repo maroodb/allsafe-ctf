@@ -208,3 +208,12 @@ def validate_username(request):
         data['error_message'] = 'A user with this username (' + username + ') already exists'
     return JsonResponse(data)
 
+
+def member_profile(request, id_user=1):
+
+    try:
+        member = Member.objects.get(pk=id_user)
+        uploads = member.news_set.count() + member.article_set.count() + member.challenge_uploader.count()
+        return render(request, "accounts/member.html", locals())
+    except Member.DoesNotExist:
+        return redirect(members)
