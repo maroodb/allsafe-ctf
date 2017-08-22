@@ -29,7 +29,7 @@ function creatChatElement(data, type_of_msg) {
         img.attr("src", "http://" + host + ":8000" + data.avatar);
     }
     else {
-        img.attr("src", "http://" +host+ data.avatar);
+        img.attr("src", "https://" +host+ data.avatar);
     }
 
     img.attr("class", "avatar");
@@ -56,7 +56,7 @@ function appendChatElement(message) {
 
 var username = $("#username");
 var avatar = $("#avatar");
-var socket = io.connect('http://chatroom.allsafeclub.info');
+var socket = io.connect('https://chatroom.allsafeclub.info');
 var box = $('#chatbox');
 var queue = $("#chatlist");
 var writing = $("#iswriting");
