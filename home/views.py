@@ -45,7 +45,8 @@ def contact(request):
 
 
 def team(request):
-    members = Member.objects.all()
+    staff = Member.objects.filter(user__is_staff=True, user__is_active=True)
+    members = Member.objects.filter(user__is_staff=False, user__is_active=True)
     return render(request, "home/team.html", locals())
 
 
