@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>About AllSafe</title>
-    <meta name="keywords" content="HTML5 Theme"/>
-    <meta name="description" content="Megakit - HTML5 Theme">
-    <meta name="author" content="keenthemes.com">
+    <meta name="keywords" content="About AllSafe Security Club"/>
+    <meta name="description" content="AllSafe Security Club is AllSafe is a non-profit club established within the National School of Engineering in Sousse.">
+    <meta name="author" content="maroodb.ovh">
 
     <!-- Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i|Montserrat:400,700" rel="stylesheet">
@@ -86,7 +86,7 @@
                     {% if user.is_authenticated %}
                         <li class="s-header__nav-menu-item"><a
                                 class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                                href="/account/dashboard"><u>Hello {{ user }}</u></a></li>
+                                href="/accounts/dashboard"><u>Hello {{ user }}</u></a></li>
                     {% else %}
 
                         <li class="s-header__nav-menu-item"><a
@@ -165,15 +165,14 @@
     <div class="g-container--md g-text-center--xs g-ver-center--md g-padding-y-150--xs g-padding-y-0--md">
         <div class="g-margin-b-60--xs">
             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">
-                Welcome to AllSafe Security Club</p>
+                Welcome to</p>
             <h1 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white g-letter-spacing--1">
-                Creative Team</h1>
-            <p class="g-font-size-18--xs g-font-size-26--md g-color--white-opacity g-margin-b-0--xs">We are a creative
-                studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and
-                simplicity.</p>
+                AllSafe Security Club</h1>
+            <p class="g-font-size-18--xs g-font-size-26--md g-color--white-opacity g-margin-b-0--xs">We are a
+                cyber security club focusing on IoT breaches, Cryptography & many amazing stuff. Somewhere between sophistication and simplicity.</p>
         </div>
         <span class="g-display-block--xs g-display-inline-block--sm g-padding-x-5--xs g-margin-b-10--xs g-margin-b-0--sm">
-                    <a href="/account/signup"
+                    <a href="/accounts/signup"
                        class="text-uppercase s-btn s-btn-icon--md s-btn--white-brd g-radius--50 g-padding-x-65--xs">JOIN Us</a>
                 </span>
     </div>
@@ -186,12 +185,12 @@
     <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-60--xs g-margin-b-100--md">
         <div class="col-sm-3 col-xs-6 g-hor-centered-row__col">
             <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
-                <img class="img-responsive" src="{% static 'home/design/img/400x500/05.jpg' %}" alt="Image">
+                <img class="img-responsive" src="{% static 'home/design/img/400x550/rasp.png' %}" alt="Image">
             </div>
         </div>
         <div class="col-sm-3 col-xs-6 g-hor-centered-row__col g-margin-b-60--xs g-margin-b-0--md">
             <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".2s">
-                <img class="img-responsive" src="{% static 'home/design/img/400x550/01.jpg' %}" alt="Image">
+                <img class="img-responsive" src="{% static 'home/design/img/400x550/proj.gif' %}" alt="Image">
             </div>
         </div>
         <div class="col-sm-1"></div>
@@ -207,12 +206,12 @@
     <div class="row g-hor-centered-row--md g-row-col--5">
         <div class="col-sm-3 col-xs-6 col-sm-push-6 g-hor-centered-row__col">
             <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".2s">
-                <img class="img-responsive" src="{% static 'home/design/img/400x550/02.jpg' %}" alt="Image">
+                <img class="img-responsive" src="{% static 'home/design/img/400x550/man.jpg' %}" alt="Image">
             </div>
         </div>
         <div class="col-sm-3 col-xs-6 col-sm-push-6 g-hor-centered-row__col g-margin-b-60--xs g-margin-b-0--md">
             <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".1s">
-                <img class="img-responsive" src="{% static 'home/design/img/400x500/06.jpg' %}" alt="Image">
+                <img class="img-responsive" src="{% static 'home/design/img/400x500/fest.jpg' %}" alt="Image">
             </div>
         </div>
         <div class="col-sm-1"></div>
@@ -273,8 +272,7 @@ Throughout these events we organize many workshops in order to gain more knowled
                     </div>
                     <div class="g-padding-x-20--xs">
                         <h3 class="g-font-size-18--xs g-color--white">Develop</h3>
-                        <p class="g-color--white-opacity">Whether through commerce or just an experience to tell your
-                            brand.</p>
+                        <p class="g-color--white-opacity">This when we deal with servers, fight with compiler and talk shell language.</p>
                     </div>
                 </div>
             </li>
@@ -288,7 +286,7 @@ Throughout these events we organize many workshops in order to gain more knowled
                     </div>
                     <div class="g-padding-x-20--xs">
                         <h3 class="g-font-size-18--xs g-color--white">Release</h3>
-                        <p class="g-color--white-opacity">Now that your brand is all dressed up and ready to party.</p>
+                        <p class="g-color--white-opacity">Now that our awesome staff is all dressed up and ready to party.</p>
                     </div>
                 </div>
             </li>
@@ -296,7 +294,7 @@ Throughout these events we organize many workshops in order to gain more knowled
         </ul>
 
         <div class="g-text-center--xs">
-            <a href="/account/signup"
+            <a href="/accounts/signup"
                class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-70--xs">Join Us</a>
         </div>
     </div>

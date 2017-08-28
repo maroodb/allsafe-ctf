@@ -82,7 +82,8 @@ socket.on('message', function (message) {
 
 socket.on('update_your_list', function (listOfMessages) {
 
-    Object.keys(listOfMessages).forEach(function (key, v) {
+    if (typeof listOfMessages !== "undefined" &&  listOfMessages !== null ){
+        Object.keys(listOfMessages).forEach(function (key, v) {
         var msgDate = new Date(parseInt(key));
         var messageFromDataBase = listOfMessages[key] ;
         messageFromDataBase.date = msgDate;
@@ -90,6 +91,9 @@ socket.on('update_your_list', function (listOfMessages) {
         appendChatElement(messageFromDataBase);
 
     });
+    }
+
+
 });
 
 socket.on('writing', function (someone) {
