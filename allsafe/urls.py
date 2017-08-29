@@ -16,9 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-
 from allsafe import settings
-from home.views import home
+from django.contrib.sitemaps.views import sitemap
+
+from allsafe.sitemap import StaticViewSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +32,7 @@ urlpatterns = [
     url(r'^projects/', include('projects.urls')),
     url(r'^magazine/', include('magazine.urls')),
     url(r'^ctf/', include('ctf.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     url(r'^', include('home.urls')),
 
 

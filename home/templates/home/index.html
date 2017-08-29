@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>AllSafe Security Club</title>
-    <meta name="keywords" content="Cyber security Club"/>
+    <meta name="keywords" content="Ethical hacking cyber security eniso"/>
     <meta name="description" content="AllSafe Security Club ENISo | Website">
-    <meta name="author" content="AllSafe Security Club">
+    <meta name="author" content="maroodb.ovh">
 
     <!-- Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i|Montserrat:400,700" rel="stylesheet">
@@ -31,8 +31,7 @@
     <link href="{% static 'home/design/css/global/global.css' %}" rel="stylesheet" type="text/css"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'home/design/img/favicon.ico' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{% static 'home/design/img/favicon.ico' %}">
+    <link rel="icon" href="{% static 'home/design/img/favicon.ico' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- analytics -->
@@ -73,10 +72,12 @@
                     <div class="s-header__logo">
                         <a href="/" class="s-header__logo-link">
                             <img class="s-header__logo-img s-header__logo-img-default"
-                                 src="{% static 'home/design/img/logolightallsafe.png' %}" alt="AllSafe Security Club Logo"
+                                 src="{% static 'home/design/img/logolightallsafe.png' %}"
+                                 alt="AllSafe Security Club Logo"
                                  width="180" height="60">
                             <img class="s-header__logo-img s-header__logo-img-shrink"
-                                 src="{% static 'home/design/img/logolightallsafe.png' %}" alt="AllSafe Security Club Logo"
+                                 src="{% static 'home/design/img/logolightallsafe.png' %}"
+                                 alt="AllSafe Security Club Logo"
                                  width="180" height="60">
                         </a>
                     </div>
@@ -330,13 +331,16 @@
 
 <!-- Parallax -->
 <div class="js__parallax-window"
-     style="background: url('{% static 'home/design/img/enisonight.png' %}') 50% 0 no-repeat fixed;">
+     style="background: url('{% static 'home/design/img/corpblue.png' %}') 50% 0 no-repeat fixed;">
     <div class="container g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
         <div class="g-margin-b-80--xs">
-            <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">The Fastest Way To
-                Develop</h2>
+            <div style="color: white;">
+                <h2 style="color: white;">“If you spend more on coffee than on IT security, you will be hacked. What's more, you deserve to be hacked”</h2>
+                <footer class="blockquote-footer"><cite title="Source Title">Richard Clarke</cite>
+                </footer>
+            </div>
         </div>
-        <a href="accounts/signup" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50">Join Us</a>
+        <a href="/accounts/signup" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50">Join Us</a>
     </div>
 </div>
 <!-- End Parallax -->
@@ -374,9 +378,9 @@
 </div>
 <!-- End Culture -->
 
-<!-- Subscribe -->
+<!-- Subscribe  -->
 <div class="js__parallax-window"
-     style="background: url('{% static 'home/design/img/darkeniso.jpg' %}') 50% 0 no-repeat fixed;">
+     style="background: url('{% static 'home/design/img/1920x1080/01.jpg' %}') 50% 0 no-repeat fixed;">
     <div class="g-container--sm g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
         <div class="g-margin-b-80--xs">
             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">
@@ -602,9 +606,9 @@
             <div class="g-recaptcha" data-sitekey="6LdCnhUUAAAAAK0rxFaSgfQpznilU43_ghRYajQV"></div>
 
             <div class="g-text-center--xs">
-                <div hidden  id="load_spinner">
+                <div hidden id="load_spinner">
                     <p>
-                         <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                        <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
                     <p>Please wait ..</p>
                     </p>
 
@@ -685,7 +689,8 @@
         <div class="row">
             <div class="col-xs-6">
                 <a href="/">
-                    <img class="g-width-100--xs g-height-auto--xs" src="{% static 'home/design/img/logolightallsafe.png' %}" width="180"
+                    <img class="g-width-100--xs g-height-auto--xs"
+                         src="{% static 'home/design/img/logolightallsafe.png' %}" width="180"
                          alt="Megakit Logo">
                 </a>
             </div>
@@ -710,11 +715,13 @@
 <script type="text/javascript" src="{% static 'home/design/vendor/jquery.smooth-scroll.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/jquery.back-to-top.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/scrollbar/jquery.scrollbar.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'home/design/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'home/design/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/swiper/swiper.jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/waypoint.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/counterup.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'home/design/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'home/design/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/jquery.parallax.min.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb3psSa35gm0WNim1xZuBPMa-D2okMmKs"></script>
 <script type="text/javascript" src="{% static 'home/design/vendor/jquery.wow.min.js' %}"></script>
