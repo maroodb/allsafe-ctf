@@ -81,7 +81,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'allsafe.wsgi.application'
 
+# Email
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+""""
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'contact@allsafeclub.info'
+EMAIL_HOST_PASSWORD = 'kaja2012'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'contact@allsafeclub.info'
+"""
 
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'contact@allsafeclub.info'
+EMAIL_HOST_PASSWORD = 'kaja2012'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'AllSafe Team <contact@allsafeclub.info>'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
