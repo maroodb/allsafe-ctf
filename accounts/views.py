@@ -139,7 +139,7 @@ def signup(request):
                 user.last_name = last_name
                 member.user = user
                 try:
-                    default_position = Position.objects.get(postion="Member")
+                    default_position = Position.objects.get(position="Member")
                     member.function = default_position
                 except Position.DoesNotExist:
                     pass

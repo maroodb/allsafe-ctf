@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^projects/', include('projects.urls')),
     url(r'^magazine/', include('magazine.urls')),
+    url(r'^events/', include('events.urls')),
     url(r'^ctf/', include('ctf.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     url('^', include('django.contrib.auth.urls')),
