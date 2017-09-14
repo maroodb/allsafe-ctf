@@ -11,7 +11,7 @@ from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageFor
 from blog.models import News
 from ctf.models import ExternalCTF
 from home.views import home
-from members.models import FakeUser, Member
+from members.models import FakeUser, Member, Position
 from django.utils import timezone
 
 
@@ -138,6 +138,11 @@ def signup(request):
                 user.first_name = first_name
                 user.last_name = last_name
                 member.user = user
+                try:
+                    default_position = Position.objects.get(postion="Member")
+                    member.function = default_position
+                except Position.DoesNotExist:
+                    pass
 
                 user.save()
                 member.save()
