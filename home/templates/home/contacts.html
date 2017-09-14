@@ -26,7 +26,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="https://www.allsafeclub.info/media/favicon.ico"/>
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <!-- End Head -->
 
@@ -160,7 +160,7 @@
 
 <!--========== PAGE CONTENT ==========-->
 <!-- Feedback Form -->
-<div class="g-position--relative" style="background: url({% static 'home/design/img/1920x1080/contact.png' %});">
+<div class="g-position--relative" style="background: url({% static 'home/design/img/1920x1080/contact.jpg' %});">
     <div class="g-container--md g-padding-y-125--xs">
         <div class="g-text-center--xs g-margin-t-50--xs g-margin-b-80--xs">
             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">
@@ -179,37 +179,55 @@
                 <div class="g-text-center--xs">
                     <i class="g-display-block--xs g-font-size-40--xs g-color--white-opacity g-margin-b-30--xs ti-map-alt"></i>
                     <h4 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Address</h4>
-                    <p class="g-color--white-opacity">277 Bedford Avenue, Brooklyn</p>
+                    <p class="g-color--white-opacity">BP 264 Sousse Erriadh 4023 @ENISo</p>
                 </div>
             </div>
             <div class="col-xs-4 g-full-width--xs">
                 <div class="g-text-center--xs">
                     <i class="g-display-block--xs g-font-size-40--xs g-color--white-opacity g-margin-b-30--xs ti-headphone-alt"></i>
                     <h4 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Call at</h4>
-                    <p class="g-color--white-opacity">+ (1) 001 389 3720</p>
+                    <p class="g-color--white-opacity">+ (216) 21 387 516</p>
                 </div>
             </div>
         </div>
-        <form class="center-block g-width-500--sm g-width-550--md">
+        <form  id="feedback_form" method="post" action="/feedback/" class="center-block g-width-500--sm g-width-550--md">
             <div class="g-margin-b-30--xs">
-                <input type="text" class="form-control s-form-v3__input" placeholder="* Name">
+               <!-- <input type="text" class="form-control s-form-v3__input" placeholder="* Name">-->
+                 {{ contact_form.name }}
             </div>
             <div class="row g-row-col-5 g-margin-b-50--xs">
                 <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                    <input type="email" class="form-control s-form-v3__input" placeholder="* Email">
+                    {{ contact_form.email }}
                 </div>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control s-form-v3__input" placeholder="* Phone">
+                    {{ contact_form.subject }}
                 </div>
             </div>
             <div class="g-margin-b-80--xs">
-                <textarea class="form-control s-form-v3__input" rows="5" placeholder="* Your message"></textarea>
+                 {{ contact_form.message }}
             </div>
+
+            <div class="g-recaptcha" data-sitekey="6LdCnhUUAAAAAK0rxFaSgfQpznilU43_ghRYajQV"></div>
             <div class="g-text-center--xs">
+                <div hidden id="load_spinner">
+                    <p>
+                        <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                    <p>Please wait ..</p>
+                    </p>
+
+                </div>
+                <div id="with_success" hidden class="alert alert-success"
+                     style="background-color: transparent; border: transparent;">
+                    <strong>Success!</strong>Your feedback has been submitted successfully.
+                </div>
+                <div id="with_error" hidden class="alert alert-danger"
+                     style="background-color: transparent; border: transparent;">
+                    <strong>Oops!</strong> Something gone wrong, please try again.
+                </div>
                 <button type="submit"
-                        class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-70--xs g-margin-b-20--xs">
-                    Submit
+                        class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-70--xs g-margin-b-20--xs" >Submit
                 </button>
+
             </div>
         </form>
     </div>
@@ -313,6 +331,10 @@
 <script type="text/javascript" src="{% static 'home/design/js/global.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/js/components/header-sticky.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'home/design/js/components/scrollbar.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax-plugin.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/design/js/contact.js' %}"></script>
+
 <!--========== END JAVASCRIPTS ==========-->
 
 </body>

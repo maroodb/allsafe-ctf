@@ -14,7 +14,7 @@
     });
 
 
-    $('textarea').addClass("form-control s-form-v2__input g-radius--10 g-padding-y-20--xs");
+     $('textarea').addClass("form-control s-form-v2__input g-radius--10 g-padding-y-20--xs");
      $('textarea').attr("placeholder",  "* YOUR MESSAGE");
      $('textarea').attr("rows",  "8");
 

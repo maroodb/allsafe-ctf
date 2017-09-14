@@ -41,6 +41,7 @@ def home(request):
 
 
 def contact(request):
+    contact_form = ContactForm()
     return render(request, "home/contacts.html", locals())
 
 
