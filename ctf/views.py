@@ -17,7 +17,7 @@ def scoreboard(request):
     score = "active"
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
 
-    top_members = Member.objects.order_by('-score')
+    top_members = Member.objects.filter(user__is_active=True).order_by('-score', '-date_of_last_hack')
     return render(request, "ctf/scoreboard.html", locals())
 
 
@@ -75,6 +75,7 @@ def ctf_resolve(request, id_ch):
         if hashed_flag == challenge.flag:
             pts = challenge.points + request.user.member.score
             request.user.member.score = pts
+            request.user.member.date_of_last_hack = timezone.now()
             request.user.member.save()
             challenge.resolvers.add(request.user.member)
             success = True

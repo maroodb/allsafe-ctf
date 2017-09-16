@@ -214,6 +214,7 @@ def validate_username(request):
     return JsonResponse(data)
 
 
+@login_required
 def member_profile(request, id_user=1):
 
     try:

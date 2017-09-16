@@ -29,12 +29,13 @@ class Member(models.Model):
     avatar = models.ImageField(default="avatars/default.png", null=True, blank=True, upload_to="avatars/")
     birthday = models.DateField(null=True, default=datetime.date.today)
     function = models.ForeignKey(Position, null=True)
-    status = models.CharField(max_length=80, null=True)
+    status = models.CharField(max_length=80, default="#")
     linkedin = models.CharField(default='#', max_length=300, blank=True)
     facebook = models.CharField(default='#', max_length=300, blank=True)
     score = models.IntegerField(default=0)
     phone = models.IntegerField(default=1111)
     date_of_join = models.DateTimeField(default=timezone.now)
+    date_of_last_hack = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "{0}".format(self.user)

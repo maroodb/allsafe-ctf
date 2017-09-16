@@ -20,6 +20,7 @@ class Challenge(models.Model):
     file = models.FileField(upload_to='ctf/challenges/', default='ctf/challenges/error.txt')
     flag = models.CharField(max_length=500)
     date = models.DateTimeField(default=timezone.now)
+    hidden = models.BooleanField(default=False)
     uploader = models.ForeignKey(Member, related_name='%(class)s_uploader', default=1)
     resolvers = models.ManyToManyField(Member, related_name='%(class)s_resolvers')
 
