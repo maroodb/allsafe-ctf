@@ -35,7 +35,7 @@ class Member(models.Model):
     score = models.IntegerField(default=0)
     phone = models.IntegerField(default=1111)
     date_of_join = models.DateTimeField(default=timezone.now)
-
+    last_resolved_ctf = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "{0}".format(self.user)
