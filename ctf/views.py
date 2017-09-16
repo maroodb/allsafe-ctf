@@ -17,7 +17,7 @@ def scoreboard(request):
     score = "active"
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
 
-    top_members = Member.objects.filter(user__is_active=True).order_by('-score', '-time_of_last_hack')
+    top_members = Member.objects.filter(user__is_active=True).order_by('-score')
     return render(request, "ctf/scoreboard.html", locals())
 
 
