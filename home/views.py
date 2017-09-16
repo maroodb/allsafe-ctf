@@ -24,7 +24,7 @@ def home(request):
         visitor.save()
     contact_form = ContactForm()
     slides = Slide.objects.order_by('-date')[:5]
-    members = Member.objects.all()
+    members = Member.objects.filter(user__is_active=True)
     projects_filters = ProjectCategory.objects.all()
     projects = list()
     for category in projects_filters:
