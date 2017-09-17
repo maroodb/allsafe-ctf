@@ -25,6 +25,11 @@ class Event(models.Model):
     sponsors = models.ManyToManyField(Sponsor)
     speakers = models.ManyToManyField(Speaker)
     took_place = models.BooleanField(default=False)
+    is_public = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
 
 
 

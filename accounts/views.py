@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageForm, NewsForm
 from blog.models import News
 from ctf.models import ExternalCTF
+from events.models import Event
 from home.models import Visitor
 from home.views import home
 from members.models import FakeUser, Member, Position
@@ -26,6 +27,7 @@ def dashboard(request):
     web_visitors = Visitor.objects.count()
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
     activities = Activity.objects.all().order_by('date')
+    events = Event.objects.all().order_by('-time')
     return render(request, 'accounts/home.html', locals())
 
 
