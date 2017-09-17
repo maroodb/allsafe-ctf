@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageForm, NewsForm
 from blog.models import News
 from ctf.models import ExternalCTF
+from home.models import Visitor
 from home.views import home
 from members.models import FakeUser, Member, Position
 from django.utils import timezone
@@ -19,8 +20,10 @@ from messenger.models import Activity
 
 @login_required
 def dashboard(request):
-    user = request.user
+    member = request.user.member
+    uploads = member.news_set.count() + member.article_set.count() + member.challenge_uploader.count()
     members_count = Member.objects.count()
+    web_visitors = Visitor.objects.count()
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
     activities = Activity.objects.all().order_by('date')
     return render(request, 'accounts/home.html', locals())

@@ -407,15 +407,41 @@
             <!-- END BREADCRUMBS -->
             <!-- BEGIN PAGE BASE CONTENT -->
             <div class="row">
-
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 bordered">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-green-sharp">
+                                    <span data-counter="counterup" data-value="{{ members_count }}">0</span>
+                                    <small class="font-green-sharp"></small>
+                                </h3>
+                                <small>Members</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
+                                            <span class="sr-only">76% progress</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> progress</div>
+                                <div class="status-number"> 76%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="dashboard-stat2 bordered">
                         <div class="display">
                             <div class="number">
                                 <h3 class="font-red-haze">
-                                    <span data-counter="counterup" data-value="{{ members_count }}">0</span>
+                                    <span data-counter="counterup" data-value="{{ web_visitors }}">0</span>
                                 </h3>
-                                <small>Club Members</small>
+                                <small>WEBSITE VISITORS</small>
                             </div>
                             <div class="icon">
                                 <i class="icon-like"></i>
@@ -434,9 +460,60 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 bordered">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-blue-sharp">
+                                    <span data-counter="counterup" data-value="{{ uploads }}"></span>
+                                </h3>
+                                <small>YOUR UPLOADS</small>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-upload"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
+                                            <span class="sr-only">45% grow</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> grow</div>
+                                <div class="status-number"> 45%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 bordered">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-purple-soft">
+                                    <span data-counter="counterup" data-value="{{ member.task_set.count }}"></span>
+                                </h3>
+                                <small>YOUR DONE TASKS</small>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 57%;" class="progress-bar progress-bar-success purple-soft">
+                                            <span class="sr-only">56% change</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> change</div>
+                                <div class="status-number"> 57%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
-
                 <div class="col-lg-6 col-xs-12 col-sm-12">
                     <div class="portlet light portlet-fit bordered">
                         <div class="portlet-title">
@@ -445,6 +522,7 @@
                                 <span class="caption-subject bold font-dark uppercase "> Activities</span>
                                 <span class="caption-helper">Club logs</span>
                             </div>
+
                         </div>
                         <div class="portlet-body">
                             <div class="cd-horizontal-timeline mt-timeline-horizontal" data-spacing="60">
@@ -452,20 +530,21 @@
                                     <div class="events-wrapper">
                                         <div class="events">
                                             <ol>
+
                                                 {% for activity in activities %}
                                                     {% if forloop.first %}
                                                         <li>
-                                                            <a href="#0" data-date="{{ activity.date | date:"d/m/Y" }}"
-                                                               class="border-after-red bg-after-red selected">{{ activity.date | date:"d b" }}</a>
+                                                            <a href="#0" data-date="{{ activity.date|date:"d/m/Y" }}"
+                                                               class="border-after-red bg-after-red selected">{{ activity.date|date:"d b" }}</a>
                                                         </li>
                                                     {% else %}
                                                         <li>
-                                                            <a href="#0" data-date="{{ activity.date | date:"d/m/Y" }}"
-                                                               class="border-after-red bg-after-red">{{ activity.date | date:"d b" }}</a>
+                                                            <a href="#0" data-date="{{ activity.date|date:"d/m/Y" }}"
+                                                               class="border-after-red bg-after-red">{{ activity.date|date:"d b" }}</a>
                                                         </li>
                                                     {% endif %}
-
                                                 {% endfor %}
+
 
                                             </ol>
                                             <span class="filling-line bg-red" aria-hidden="true"></span>
@@ -490,10 +569,9 @@
                                 <!-- .timeline -->
                                 <div class="events-content">
                                     <ol>
-
                                         {% for activity in activities %}
                                             {% if forloop.first %}
-                                                <li data-date="{{ activity.date | date:"d/m/Y" }}">
+                                                <li class="selected" data-date="{{ activity.date|date:"d/m/Y" }}">
                                                     <div class="mt-title">
                                                         <h2 class="mt-content-title">{{ activity.title }}</h2>
                                                     </div>
@@ -505,19 +583,19 @@
                                                             <a href="javascript:;" class="font-blue-madison">
                                                                 {{ activity.publisher.user.first_name }}{{ activity.publisher.user.last_name }}</a>
                                                         </div>
-                                                        <div class="mt-author-datetime font-grey-mint">{{ activity.date|date:"d Y" }}
+                                                        <div class="mt-author-datetime font-grey-mint">{{ activity.date|date:"d b Y" }} &nbsp;{{ activity.date|time }}
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                     <div class="mt-content border-grey-steel">
                                                         <p>{{ activity.description }}</p>
-                                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read
+                                                        <a href="javascript:;" class="btn btn-circle red btn-outline">Read
                                                             More</a>
+
                                                     </div>
                                                 </li>
-
                                             {% else %}
-                                                <li class="selected" data-date="{{ activity.date | date:"d/m/Y" }}">
+                                                <li data-date="{{ activity.date|date:"d/m/Y" }}">
                                                     <div class="mt-title">
                                                         <h2 class="mt-content-title">{{ activity.title }}</h2>
                                                     </div>
@@ -529,18 +607,20 @@
                                                             <a href="javascript:;" class="font-blue-madison">
                                                                 {{ activity.publisher.user.first_name }}{{ activity.publisher.user.last_name }}</a>
                                                         </div>
-                                                        <div class="mt-author-datetime font-grey-mint">{{ activity.date|date:"d Y" }}
+                                                        <div class="mt-author-datetime font-grey-mint">{{ activity.date|date:"d b Y" }} &nbsp;{{ activity.date|time }}
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                     <div class="mt-content border-grey-steel">
                                                         <p>{{ activity.description }}</p>
-                                                        <a href="javascript:;" class="btn btn-circle green-turquoise">Read
+                                                        <a href="javascript:;" class="btn btn-circle red btn-outline">Read
                                                             More</a>
+
                                                     </div>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
+
                                     </ol>
                                 </div>
                                 <!-- .events-content -->
@@ -1032,6 +1112,7 @@
                     </div>
                 </div>
             </div>
+
 
         </div>
         <!-- BEGIN FOOTER -->
