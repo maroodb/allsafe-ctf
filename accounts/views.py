@@ -14,12 +14,15 @@ from home.views import home
 from members.models import FakeUser, Member, Position
 from django.utils import timezone
 
+from messenger.models import Activity
+
 
 @login_required
 def dashboard(request):
     user = request.user
     members_count = Member.objects.count()
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
+    activities = Activity.objects.all().order_by('date')
     return render(request, 'accounts/home.html', locals())
 
 

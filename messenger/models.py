@@ -15,3 +15,17 @@ class Inbox(models.Model):
     owner = models.OneToOneField(Member)
     messages = models.ManyToManyField(Message)
 
+
+class Broadcast(models.Model):
+    title = models.CharField(max_length=150)
+
+
+class Activity(models.Model):
+    title = models.CharField(max_length=120)
+    date = models.DateTimeField(default=timezone.now)
+    description = models.TextField(max_length=4000)
+    publisher = models.ForeignKey(Member)
+
+    def __str__(self):
+        return self.title
+
