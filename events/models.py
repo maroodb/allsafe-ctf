@@ -1,5 +1,7 @@
 from django.db import models
 
+from members.models import Member
+
 
 class Sponsor(models.Model):
     name = models.CharField(max_length=200)
@@ -18,7 +20,7 @@ class Speaker(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=500)
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=2000)
     time = models.DateTimeField()
     poster = models.ImageField(upload_to='posters/', default='posters/default.png')
     overview = models.URLField()
@@ -26,6 +28,7 @@ class Event(models.Model):
     speakers = models.ManyToManyField(Speaker)
     took_place = models.BooleanField(default=False)
     is_public = models.BooleanField(default=False)
+    publisher = models.ForeignKey(Member, default=1)
 
     def __str__(self):
         return self.name
