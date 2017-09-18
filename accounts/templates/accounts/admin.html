@@ -488,13 +488,14 @@
 
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" action="./active" method="post">
+                                {% csrf_token %}
                                 <div class="form-body">
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Select users</label>
                                         <div class="col-md-9">
-                                            <select multiple class="form-control">
+                                            <select name="inactive-users" multiple class="form-control">
 
                                                 {% for u in inactive_users %}
                                                      <option value="{{ u.pk }}">{{ u.first_name }} {{ u.last_name }}</option>

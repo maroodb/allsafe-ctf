@@ -6,6 +6,7 @@ urlpatterns = [
 
     url(r'^login/', login_view, name='login'),
     url(r'^dashboard/', dashboard),
+    url(r'^admin/active', account_management),
     url(r'^admin/', administration),
     url(r'^myprofile/', my_profile),
     url(r'^signup/', signup),

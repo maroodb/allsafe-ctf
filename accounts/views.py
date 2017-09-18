@@ -1,9 +1,11 @@
 import datetime
 
 import requests
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
@@ -19,11 +21,34 @@ from django.utils import timezone
 from messenger.models import Activity
 
 
+@staff_member_required
 def administration(request):
 
     active_users = User.objects.filter(is_active=True)
     inactive_users = User.objects.filter(is_active=False)
     return render(request, "accounts/admin.html", locals())
+
+
+@staff_member_required
+def account_management(request):
+
+    if request.POST:
+        users_list = request.POST.getlist('inactive-users')
+        for u in users_list:
+            try:
+                new_user = User.objects.get(pk=u)
+                if not new_user.is_active:
+                    new_user.is_active = True
+                    new_user.save()
+                    html_content = generate_email(new_user.first_name, new_user.username)
+                    subject, from_email, to = '[Activation] AllSafe Account', 'contact@allsafeclub.info', new_user.email
+                    msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
+                    msg.attach_alternative(html_content, "text/html")
+                    msg.send()
+            except User.DoesNotExist:
+                pass
+
+    return redirect('/accounts/admin')
 
 
 @login_required
@@ -238,3 +263,13 @@ def member_profile(request, id_user=1):
         return render(request, "accounts/member.html", locals())
     except Member.DoesNotExist:
         return redirect(members)
+
+
+def generate_email(name, username):
+    greetings = "<h2>Hello " + name + " !</h2><br>"
+    body = "<p>Your account has been successfully activated.</p>"
+    link = "<p>You are able to login to members dashboard <a href ='https://www.allsafeclub.info/accounts/login'>here</a></p>"
+    auth = "<p> username : <strong>" + username + "</strong>"
+    regards = "<p>AllSafe Team</p> <br><p>Regards,</p>"
+    email_body = greetings + body + link + auth + regards
+    return email_body
