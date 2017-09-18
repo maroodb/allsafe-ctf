@@ -19,6 +19,13 @@ from django.utils import timezone
 from messenger.models import Activity
 
 
+def administration(request):
+
+    active_users = User.objects.filter(is_active=True)
+    inactive_users = User.objects.filter(is_active=False)
+    return render(request, "accounts/admin.html", locals())
+
+
 @login_required
 def dashboard(request):
     member = request.user.member

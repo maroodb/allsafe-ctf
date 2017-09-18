@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>AllSafe | Scoreboard</title>
+    <title>AllSafe | Dashboard</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin Theme #5 for statistics, charts, recent events and reports"
@@ -19,27 +19,37 @@
     <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css"/>
     <!-- END LAYOUT FIRST STYLES -->
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'ctf/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'ctf/assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'ctf/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'ctf/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'ctf/assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'ctf/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet"
+          type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="{% static 'ctf/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'ctf/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css' %}"
+          rel="stylesheet" type="text/css"/>
     <link href="{% static 'ctf/assets/global/plugins/morris/morris.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'ctf/assets/global/plugins/fullcalendar/fullcalendar.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'ctf/assets/global/plugins/fullcalendar/fullcalendar.min.css' %}" rel="stylesheet"
+          type="text/css"/>
     <link href="{% static 'ctf/assets/global/plugins/jqvmap/jqvmap/jqvmap.css' %}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="{% static 'ctf/assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="{% static 'ctf/assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components"
+          type="text/css"/>
     <link href="{% static 'ctf/assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css"/>
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="{% static 'ctf/assets/layouts/layout5/css/layout.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'ctf/assets/layouts/layout5/css/custom.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'ctf/assets/global/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'accounts/dashboard/assets/global/plugins/font-awesome/css/font-awesome.min.css' %}"
+          rel="stylesheet" type="text/css"/>
 
     <!-- END THEME LAYOUT STYLES -->
+
+
     <link rel="icon" href="https://www.allsafeclub.info/media/favicon.ico"/>
 </head>
 <!-- END HEAD -->
@@ -65,7 +75,8 @@
                     <!-- End Toggle Button -->
                     <!-- BEGIN LOGO -->
                     <a id="index" class="page-logo" href="index.html">
-                        <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="AllSafe">
+                        <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="Logo" width="200"
+                             height="100">
                     </a>
                     <!-- END LOGO -->
 
@@ -207,8 +218,8 @@
                         <div class="btn-group-img btn-group">
                             <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown"
                                     data-hover="dropdown" data-close-others="true">
-                                <span>Hi, {{ request.user }}</span>
-                                <img src="{{ request.user.member.avatar.url }}" alt=""></button>
+                                <span>Hi, {{ user }}</span>
+                                <img src="{{ user.member.avatar.url }}" alt=""></button>
                             <ul class="dropdown-menu-v2" role="menu">
                                 <li>
                                     <a href="/accounts/myprofile">
@@ -223,13 +234,13 @@
                                 <li>
                                     <a href="#">
                                         <i class="icon-envelope-open"></i> My Inbox
-                                        <span class="badge badge-danger"> 0 </span>
+                                        <span class="badge badge-danger"> 3 </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="icon-rocket"></i> My Tasks
-                                        <span class="badge badge-success"> 0 </span>
+                                        <span class="badge badge-success"> 7 </span>
                                     </a>
                                 </li>
                                 <li class="divider"></li>
@@ -253,7 +264,7 @@
                 <!-- BEGIN HEADER MENU -->
                 <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-home"></i> Dashboard </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
@@ -267,8 +278,15 @@
                                 </li>
                                 <li>
                                     <a href="/accounts/chatroom/">
-                                        <i class="icon-graph"></i> Hacking room </a>
+                                        <i class="icon-graph"></i> Hackers Chatroom </a>
                                 </li>
+                                {% if request.user.is_staff %}
+                                    <li>
+                                        <a href="/accounts/admin/">
+                                            <i class="icon-graph"></i> <strong>Administration</strong></a>
+                                    </li>
+                                {% endif %}
+
                             </ul>
                         </li>
                         <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
@@ -289,17 +307,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected ">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-briefcase"></i> CTF </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li class="{{ score }}">
+                                <li>
                                     <a href="/ctf/scoreboard"> Scoreboard </a>
                                 </li>
-                                <li class="{{ challenge }}">
+                                <li>
                                     <a href="/ctf/challenges"> Challenges </a>
                                 </li>
-                                <li class="{{ upld }}">
+                                <li>
                                     <a href="/ctf/upload"> Upload a challenge </a>
                                 </li>
                                 <li class="dropdown more-dropdown-sub">
@@ -349,7 +367,7 @@
                                         <i class="icon-docs"></i> Publish </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="#">
+                                            <a href="/accounts/publish/news">
                                                 <i class="icon-clock"></i> News </a>
                                         </li>
                                         <li>
@@ -384,76 +402,126 @@
             <!--/container-->
         </nav>
     </header>
-
     <!-- END HEADER -->
     <div class="container-fluid">
+
         <div class="page-content">
             <!-- BEGIN BREADCRUMBS -->
             <div class="breadcrumbs">
-                <h1>CTF Scoreboard</h1>
+                <h1>Dashboard Admin Of AllSafe Web App</h1>
 
             </div>
             <!-- END BREADCRUMBS -->
             <!-- BEGIN PAGE BASE CONTENT -->
-
             <div class="row">
-
-                <div class="col-lg-12 col-xs-12 col-sm-12">
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
                     <div class="portlet light bordered">
-                        <div class="portlet-title tabbable-line">
-                            <div class="caption">
-                                <i class=" icon-social-twitter font-dark hide"></i>
-                                <span class="caption-subject font-dark bold uppercase">AllSafe Hackers</span>
+                        <div class="portlet-title">
+                            <div class="caption font-red-sunglo">
+                                <i class="icon-envelope font-red-sunglo"></i>
+                                <span class="caption-subject bold uppercase">Emailing</span>
                             </div>
 
                         </div>
-                        <div class="portlet-body">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_actions_pending">
-                                    <!-- BEGIN: Actions -->
-                                    <div class="mt-actions">
-                                        {% for hacker in top_members %}
-                                        <div class="mt-action">
-                                            <div class="mt-action-img">
-                                                <img src="{{ hacker.avatar.url }}" width="41" height="41"/></div>
-                                            <div class="mt-action-body">
-                                                <div class="mt-action-row">
-                                                    <div class="mt-action-info ">
-                                                        <div class="mt-action-icon ">
-                                                            <i>{{ forloop.counter }}</i>
-                                                        </div>
-                                                        <div class="mt-action-details ">
-                                                            <span class="mt-action-author">{{ hacker.user.username }}</span>
-                                                            <p class="mt-action-desc">Resolved {{ hacker.challenge_resolvers.count }} challenges</p>
-                                                        </div>
-                                                    </div>
+                        <div class="portlet-body form">
+                            <form role="form">
+                                <div class="form-body">
 
-                                                    <div class="mt-action-buttons ">
-                                                        <div class="btn-group btn-group-circle">
-                                                            <button type="button" class="btn btn-outline green btn-sm">
-                                                                {{ hacker.score }} PT
-                                                            </button>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="form-group">
+                                        <label>Subject</label>
+                                        <div class="input-icon right">
+                                            <i class="fa fa-microphone fa-spin font-blue"></i>
+                                            <input type="text" class="form-control" placeholder="Subject"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Greetings</label>
+                                        <div class="input-icon input-icon-sm right">
+                                            <i class="fa fa-bell-o"></i>
+                                            <input type="text" class="form-control input-sm" placeholder="Say Hello..">
                                         </div>
-                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>To:</label>
+                                        <select class="form-control">
+                                            <option>All Members</option>
+                                            <option>Staff Members</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>To Multiple Selection:</label>
+                                        <select multiple class="form-control">
+                                            {% for u in active_users %}
+                                                <option value="{{ u.pk }}">{{ u.first_name }} {{ u.last_name }} ({{ u.username }})</option>
+                                            {% endfor %}
 
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Message</label>
+                                        <textarea name ="message" class="form-control" rows="3" placeholder="Enter Your message.."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile1">Attachment (Optional)</label>
+                                        <input name="file" type="file" id="exampleInputFile1">
+                                        <p class="help-block">Plz no virus, no backdoors..</p>
                                     </div>
 
-                                    <!-- END: Actions -->
                                 </div>
-                            </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn blue">Send</button>
+                                    <button type="reset" class="btn default">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+
+                </div>
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-settings font-dark"></i>
+                                <span class="caption-subject font-dark sbold uppercase">Accounts Management</span>
+                            </div>
+
+                        </div>
+                        <div class="portlet-body form">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Select users</label>
+                                        <div class="col-md-9">
+                                            <select multiple class="form-control">
+
+                                                {% for u in inactive_users %}
+                                                     <option value="{{ u.pk }}">{{ u.first_name }} {{ u.last_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" class="btn green">Active selected accounts</button>
+                                            <button type="reset" class="btn default">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- END PAGE BASE CONTENT -->
+
         </div>
-         <!-- BEGIN FOOTER -->
+        <!-- BEGIN FOOTER -->
         <p class="copyright"> {% now "Y" %} &copy; AllSafe Security Club
         </p>
         <a href="#index" class="go2top">
@@ -463,12 +531,379 @@
     </div>
 </div>
 <!-- END CONTAINER -->
+{% comment %}
 <!-- BEGIN QUICK SIDEBAR -->
 <a href="javascript:;" class="page-quick-sidebar-toggler">
     <i class="icon-login"></i>
 </a>
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+    <div class="page-quick-sidebar">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
+                    <span class="badge badge-danger">2</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Alerts
+                    <span class="badge badge-success">7</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-bell"></i> Alerts </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-info"></i> Notifications </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-speech"></i> Activities </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-settings"></i> Settings </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tab-content">
 
+            <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+                <div class="page-quick-sidebar-alerts-list">
+                    <h3 class="list-heading">General</h3>
+                    <ul class="feeds list-items">
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 4 pending tasks.
+                                            <span class="label label-sm label-warning "> Take action
+                                                        <i class="fa fa-share"></i>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> Just now</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-success">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Finance Report for year 2013 has been released.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-danger">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> New order received with
+                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 30 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-success">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-bell-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> Web server hardware needs to be upgraded.
+                                            <span class="label label-sm label-warning"> Overdue </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 2 hours</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-default">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> IPO Report for year 2013 has been released.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <h3 class="list-heading">System</h3>
+                    <ul class="feeds list-items">
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 4 pending tasks.
+                                            <span class="label label-sm label-warning "> Take action
+                                                        <i class="fa fa-share"></i>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> Just now</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-danger">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> Finance Report for year 2013 has been released.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-default">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> New order received with
+                                            <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 30 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-success">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> You have 5 pending membership that requires a quick review.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 24 mins</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-warning">
+                                            <i class="fa fa-bell-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc"> Web server hardware needs to be upgraded.
+                                            <span class="label label-sm label-default "> Overdue </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 2 hours</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <div class="cont-col1">
+                                            <div class="label label-sm label-info">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                        </div>
+                                        <div class="cont-col2">
+                                            <div class="desc"> IPO Report for year 2013 has been released.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+                                    <div class="date"> 20 mins</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
+                <div class="page-quick-sidebar-settings-list">
+                    <h3 class="list-heading">General Settings</h3>
+                    <ul class="list-items borderless">
+                        <li> Enable Notifications
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                        <li> Allow Tracking
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="info"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                        <li> Log Errors
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                        <li> Auto Sumbit Issues
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                        <li> Enable SMS Alerts
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                    </ul>
+                    <h3 class="list-heading">System Settings</h3>
+                    <ul class="list-items borderless">
+                        <li> Security Level
+                            <select class="form-control input-inline input-sm input-small">
+                                <option value="1">Normal</option>
+                                <option value="2" selected>Medium</option>
+                                <option value="e">High</option>
+                            </select>
+                        </li>
+                        <li> Failed Email Attempts
+                            <input class="form-control input-inline input-sm input-small" value="5"/></li>
+                        <li> Secondary SMTP Port
+                            <input class="form-control input-inline input-sm input-small" value="3560"/></li>
+                        <li> Notify On System Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                        <li> Notify On SMTP Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="warning"
+                                   data-on-text="ON" data-off-color="default" data-off-text="OFF"></li>
+                    </ul>
+                    <div class="inner-content">
+                        <button class="btn btn-success">
+                            <i class="icon-settings"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- END QUICK SIDEBAR -->
+{% endcomment %}
 <!-- BEGIN QUICK NAV -->
 <nav class="quick-nav">
     <a class="quick-nav-trigger" href="#0">
@@ -477,7 +912,7 @@
     <ul>
         <li>
             <a href="/accounts/dashboard"
-                class="active">
+               class="active">
                 <span>Home</span>
                 <i class="icon-basket"></i>
             </a>
@@ -503,13 +938,12 @@
     </ul>
     <span aria-hidden="true" class="quick-nav-bg"></span>
 </nav>
-
 <div class="quick-nav-overlay"></div>
 <!-- END QUICK NAV -->
 <!--[if lt IE 9]>
 <script src="{% static 'ctf/assets/global/plugins/respond.min.js' %}"></script>
 <script src="{% static 'ctf/assets/global/plugins/excanvas.min.js' %}"></script>
-<script src="{% static 'ctf/asset/ctf/scoreboards/global/plugins/ie8.fix.min.js' %}"></script>
+<script src="{% static 'ctf/assets/global/plugins/ie8.fix.min.js' %}"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
 <script src="{% static 'ctf/assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>

@@ -280,6 +280,13 @@
                                     <a href="/accounts/chatroom/">
                                         <i class="icon-graph"></i> Hackers Chatroom </a>
                                 </li>
+                                {% if request.user.is_staff %}
+                                    <li>
+                                        <a href="/accounts/admin/">
+                                            <i class="icon-graph"></i> <strong>Administration</strong></a>
+                                    </li>
+                                {% endif %}
+
                             </ul>
                         </li>
                         <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
@@ -661,7 +668,7 @@
                                                                class="border-after-blue bg-after-blue selected">{{ event.name }}</a>
                                                         </li>
                                                     {% else %}
-                                                         <li>
+                                                        <li>
                                                             <a href="#0" data-date="{{ event.time|date:"d/m/Y" }}"
                                                                class="border-after-blue bg-after-blue">{{ event.name }}</a>
                                                         </li>
@@ -695,32 +702,64 @@
 
                                         {% for event in events %}
                                             {% if forloop.first %}
-                                                 <li class="selected" data-date="{{ event.time|date:"d/m/Y" }}">
-                                            <div class="mt-title">
-                                                <h2 class="mt-content-title">{{ event.name }}</h2>
-                                            </div>
-                                            <div class="mt-author">
-                                                <div class="mt-avatar">
-                                                    <img src="{{ event.publisher.avatar.url }}"/>
-                                                </div>
-                                                <div class="mt-author-name">
-                                                    <a href="javascript:;" class="font-blue-madison">{{ event.publisher.user.first_name }}&nbsp;{{ event.publisher.user.last_name }}</a>
-                                                </div>
-                                                <div class="mt-author-datetime font-grey-mint">{{ event.time|date:"d b Y" }}
+                                                <li class="selected" data-date="{{ event.time|date:"d/m/Y" }}">
+                                                    <div class="mt-title">
+                                                        <h2 class="mt-content-title">{{ event.name }}</h2>
+                                                    </div>
+                                                    <div class="mt-author">
+                                                        <div class="mt-avatar">
+                                                            <img src="{{ event.publisher.avatar.url }}"/>
+                                                        </div>
+                                                        <div class="mt-author-name">
+                                                            <a href="javascript:;"
+                                                               class="font-blue-madison">{{ event.publisher.user.first_name }}&nbsp;{{ event.publisher.user.last_name }}</a>
+                                                        </div>
+                                                        <div class="mt-author-datetime font-grey-mint">{{ event.time|date:"d b Y" }}
                                                             &nbsp;{{ event.time|time }}
 
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="mt-content border-grey-steel">
-                                                <p>{{ event.description }}</p>
-                                                {% if event.is_public %}
-                                                <a href="/events/{{ event.pk }}" class="btn btn-circle btn-outline green-jungle">More  Details</a>
-                                                {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="mt-content border-grey-steel">
+                                                        <p>{{ event.description }}</p>
+                                                        {% if event.is_public %}
+                                                            <a href="/events/{{ event.pk }}"
+                                                               class="btn btn-circle btn-outline green-jungle">More
+                                                                Details</a>
+                                                        {% endif %}
 
-                                            </div>
-                                        </li>
+                                                    </div>
+                                                </li>
                                             {% else %}
+                                                <li data-date="{{ event.time|date:"d/m/Y" }}">
+                                                    <div class="mt-title">
+                                                        <h2 class="mt-content-title">{{ event.name }}</h2>
+                                                    </div>
+                                                    <div class="mt-author">
+                                                        <div class="mt-avatar">
+                                                            <img src="{{ event.publisher.avatar.url }}"/>
+                                                        </div>
+                                                        <div class="mt-author-name">
+                                                            <a href="javascript:;"
+                                                               class="font-blue-madison">{{ event.publisher.user.first_name }}&nbsp;{{ event.publisher.user.last_name }}</a>
+                                                        </div>
+                                                        <div class="mt-author-datetime font-grey-mint">{{ event.time|date:"d b Y" }}
+                                                            &nbsp;{{ event.time|time }}
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="mt-content border-grey-steel">
+                                                        <p>{{ event.description }}</p>
+                                                        {% if event.is_public %}
+                                                            <a href="/events/{{ event.pk }}"
+                                                               class="btn btn-circle btn-outline green-jungle">More
+                                                                Details</a>
+                                                        {% endif %}
+
+                                                    </div>
+                                                </li>
+
                                             {% endif %}
                                         {% endfor %}
 
