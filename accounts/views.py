@@ -34,7 +34,7 @@ def dashboard(request):
     web_visitors = Visitor.objects.count()
     externals_ctfs = ExternalCTF.objects.filter(end_date__gt=timezone.now())
     activities = Activity.objects.all().order_by('date')
-    events = Event.objects.all().order_by('-time')
+    events = Event.objects.all().order_by('time')
     return render(request, 'accounts/home.html', locals())
 
 
