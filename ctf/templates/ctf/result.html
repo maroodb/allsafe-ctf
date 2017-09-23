@@ -69,7 +69,7 @@
                     </button>
                     <!-- End Toggle Button -->
                     <!-- BEGIN LOGO -->
-                    <a id="index" class="page-logo" href="index.html">
+                    <a id="index" class="page-logo" href="/">
                         <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="AllSafe">
                     </a>
                     <!-- END LOGO -->
@@ -401,16 +401,23 @@
 
                         <div class="portfolio-content portfolio-1">
 
-                               {% if success %}
-                                    <div class="alert alert-success">
-                                        <strong>Congratulation! &nbsp;</strong> <i class="fa fa-user-secret">&nbsp;</i>You did it!.
+                            {% if success %}
+                                <div class="alert alert-success">
+                                    <strong>Congratulation! &nbsp;</strong> <i class="fa fa-user-secret">&nbsp;</i>You
+                                    did it!.
+                                </div>
+                            {% endif %}
+                            {% if not success %}
+                                {% if did_it %}
+                                    <div class="alert alert-warning">
+                                        <strong>hahahaha!&nbsp;</strong>cute hacker :*. Try again.
                                     </div>
-                                {% endif %}
-                                {% if not success %}
+                                {% else %}
                                     <div class="alert alert-danger">
                                         <strong>Sorry!</strong> Try again please.
                                     </div>
                                 {% endif %}
+                            {% endif %}
                             <div>
                                 <a href="/ctf/challenges" class="cbp-l-loadMore-defaultText">Go back to challenges!</a>
                             </div>
@@ -445,7 +452,7 @@
     <ul>
         <li>
             <a href="/accounts/dashboard"
-                class="active">
+               class="active">
                 <span>Home</span>
                 <i class="icon-basket"></i>
             </a>
@@ -474,7 +481,6 @@
 
 <div class="quick-nav-overlay"></div>
 <!-- Modals ctf challenges -->
-
 
 
 <!-- END QUICK NAV -->

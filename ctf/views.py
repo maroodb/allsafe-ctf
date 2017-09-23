@@ -71,8 +71,13 @@ def ctf_resolve(request, id_ch):
         challenge = Challenge.objects.get(pk=id_ch)
         flag = request.POST.get('flag', "&")
         hashed_flag = hashlib.sha1(flag.encode()).hexdigest()
+        hacker = request.user.member
 
-        if hashed_flag == challenge.flag:
+        if Challenge.objects.filter(resolvers=hacker, pk=challenge.pk).exists():
+            success = False
+            did_it = True
+
+        elif hashed_flag == challenge.flag:
             pts = challenge.points + request.user.member.score
             request.user.member.score = pts
             request.user.member.last_resolved_ctf = timezone.now()
