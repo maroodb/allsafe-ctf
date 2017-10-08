@@ -79,7 +79,7 @@
                     </button>
                     <!-- End Toggle Button -->
                     <!-- BEGIN LOGO -->
-                    <a id="index" class="page-logo" href="index.html">
+                    <a id="index" class="page-logo" href="/accounts/dashboard">
                         <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="Logo" width="200"
                              height="100">
                     </a>
@@ -92,7 +92,7 @@
                             <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown"
                                     data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
-                                <span class="badge">7</span>
+                                <span class="badge"></span>
                             </button>
                             <ul class="dropdown-menu-v2">
                                 <li class="external">
@@ -269,11 +269,11 @@
                 <!-- BEGIN HEADER MENU -->
                 <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-home"></i> Dashboard </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li class="active">
+                                <li>
                                     <a href="/accounts/dashboard">
                                         <i class="icon-bar-chart"></i> Home </a>
                                 </li>
@@ -282,7 +282,7 @@
                                         <i class="icon-bulb"></i> Club News </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/accounts/chatroom/">
                                         <i class="icon-graph"></i> Hackers Chatroom </a>
                                 </li>
                             </ul>
@@ -347,7 +347,7 @@
                             </ul>
                         </li>
 
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-layers"></i> PROFILE </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
@@ -365,7 +365,7 @@
                                         <i class="icon-docs"></i> Publish </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="#">
+                                            <a href="/accounts/publish/news/">
                                                 <i class="icon-clock"></i> News </a>
                                         </li>
                                         <li>
@@ -382,7 +382,7 @@
                             <a href="javascript:;" class="text-uppercase"> More </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                   <a href="/accounts/members">Members</a>
+                                    <a href="/accounts/members">Members</a>
                                 </li>
                                 <li>
                                     <a href="#">Videos</a>

@@ -67,8 +67,9 @@
                     </button>
                     <!-- End Toggle Button -->
                     <!-- BEGIN LOGO -->
-                    <a id="index" class="page-logo" href="index.html">
-                        <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="AllSafe">
+                    <a id="index" class="page-logo" href="/accounts/dashboard">
+                        <img src="{% static 'home/design/img/logolightallsafe.png' %}" alt="Logo" width="200"
+                             height="100">
                     </a>
                     <!-- END LOGO -->
 
@@ -79,7 +80,7 @@
                             <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown"
                                     data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
-                                <span class="badge">7</span>
+                                <span class="badge"></span>
                             </button>
                             <ul class="dropdown-menu-v2">
                                 <li class="external">
@@ -210,8 +211,8 @@
                         <div class="btn-group-img btn-group">
                             <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown"
                                     data-hover="dropdown" data-close-others="true">
-                                <span>Hi, {{ request.user }}</span>
-                                <img src="{{ request.user.member.avatar.url }}" alt=""></button>
+                                <span>Hi, {{ user }}</span>
+                                <img src="{{ user.member.avatar.url }}" alt=""></button>
                             <ul class="dropdown-menu-v2" role="menu">
                                 <li>
                                     <a href="/accounts/myprofile">
@@ -226,13 +227,13 @@
                                 <li>
                                     <a href="#">
                                         <i class="icon-envelope-open"></i> My Inbox
-                                        <span class="badge badge-danger"> 0 </span>
+                                        <span class="badge badge-danger"> 3 </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="icon-rocket"></i> My Tasks
-                                        <span class="badge badge-success"> 0 </span>
+                                        <span class="badge badge-success"> 7 </span>
                                     </a>
                                 </li>
                                 <li class="divider"></li>
@@ -256,11 +257,11 @@
                 <!-- BEGIN HEADER MENU -->
                 <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-home"></i> Dashboard </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li class="active">
+                                <li>
                                     <a href="/accounts/dashboard">
                                         <i class="icon-bar-chart"></i> Home </a>
                                 </li>
@@ -270,7 +271,7 @@
                                 </li>
                                 <li>
                                     <a href="/accounts/chatroom/">
-                                        <i class="icon-graph"></i> Hacking room </a>
+                                        <i class="icon-graph"></i> Hackers Chatroom </a>
                                 </li>
                             </ul>
                         </li>
@@ -278,31 +279,27 @@
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-puzzle"></i> Library </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Resouces </a>
+                               <li>
+                                    <a href="/accounts/library">
+                                        <i class="icon-docs"></i> Resources </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Upload File </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Search </a>
+                                    <a href="/accounts/library/upload">
+                                        <i class="icon-cloud-upload"></i> Upload File </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected ">
+                        <li class="dropdown dropdown-fw dropdown-fw-disabled active open selected  ">
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-briefcase"></i> CTF </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li class="{{ score }}">
+                                <li>
                                     <a href="/ctf/scoreboard"> Scoreboard </a>
                                 </li>
-                                <li class="{{ challenge }}">
+                                <li>
                                     <a href="/ctf/challenges"> Challenges </a>
                                 </li>
-                                <li class="{{ upld }}">
+                                <li class="active">
                                     <a href="/ctf/upload"> Upload a challenge </a>
                                 </li>
                                 <li class="dropdown more-dropdown-sub">
@@ -352,7 +349,7 @@
                                         <i class="icon-docs"></i> Publish </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="#">
+                                            <a href="/accounts/publish/news/">
                                                 <i class="icon-clock"></i> News </a>
                                         </li>
                                         <li>

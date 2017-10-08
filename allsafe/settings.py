@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'ctf',
     'messenger',
     'events',
+    'library',
 ]
 
 MIDDLEWARE = [

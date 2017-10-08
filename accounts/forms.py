@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 
 from blog.models import News
+from library.models import Document
 from members.models import Member
 
 
@@ -42,3 +43,8 @@ class NewsForm(forms.ModelForm):
         model = News
         exclude = ('publisher', 'date')
 
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        exclude = ('uploader', 'upload_date')

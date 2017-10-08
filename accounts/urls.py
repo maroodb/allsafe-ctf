@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 
 from accounts.views import *
+from library.views import document_details
 
 urlpatterns = [
 
@@ -16,6 +17,10 @@ urlpatterns = [
     url(r'^publish/news/', publish_news),
     url(r'^ajax/validate_username/$', validate_username, name='validate_username'),
     url(r'^members/$', members),
+    url(r'^library/$', library),
+    url(r'^library/upload', upload_document),
+    url(r'^library/(?P<page>\d+)$', library, name='documents_list'),
+    url(r'^library/documents/(?P<doc_id>\d+)$', document_details, name='document_details'),
     url(r'^members/profile/(?P<id_user>\d+)$', member_profile),
 
 ]

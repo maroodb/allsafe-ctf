@@ -32,7 +32,7 @@
 
     <!-- Favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="https://www.allsafeclub.info/media/favicon.ico" />
+    <link rel="icon" href="https://www.allsafeclub.info/media/favicon.ico"/>
     <!-- analytics -->
     <script>
         (function (i, s, o, g, r, a, m) {
@@ -289,7 +289,8 @@
                 <div class="g-media__body g-padding-x-20--xs">
                     <h3 class="g-font-size-18--xs">Forensic</h3>
                     <p class="g-margin-b-0--xs">Investigate a system whose purpose is to identify an attacker or an
-                        attack scenario. Any challenge to examine and process a hidden piece of information out of static data files.</p>
+                        attack scenario. Any challenge to examine and process a hidden piece of information out of
+                        static data files.</p>
                 </div>
             </div>
         </div>
@@ -334,7 +335,8 @@
     <div class="container g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
         <div class="g-margin-b-80--xs">
             <div style="color: white;">
-                <h2 style="color: white;">“If you spend more on coffee than on IT security, you will be hacked. What's more, you deserve to be hacked”</h2>
+                <h2 style="color: white;">“If you spend more on coffee than on IT security, you will be hacked. What's
+                    more, you deserve to be hacked”</h2>
                 <footer class="blockquote-footer"><cite title="Source Title">Richard Clarke</cite>
                 </footer>
             </div>
@@ -463,19 +465,21 @@
             <!-- Swiper Wrapper -->
             <div class="swiper-wrapper g-margin-b-50--xs">
                 {% for member in members %}
-                    <div class="swiper-slide g-padding-x-130--sm g-padding-x-150--lg">
-                        <div class="g-padding-x-20--xs g-padding-x-50--lg">
-                            <img class="g-width-70--xs g-height-70--xs g-hor-border-4__solid--white g-box-shadow__dark-lightest-v4 g-radius--circle g-margin-b-30--xs"
-                                 src="{{ member.avatar.url }}"
-                                 alt="{{ member.user.first_name }} {{ member.user.last_name }}">
-                            <div class="g-margin-b-40--xs">
-                                <p class="g-font-size-22--xs g-font-size-28--sm g-color--heading">
-                                    <i>"{{ member.status }}"</i></p>
+                    {% if member.status != "#" %}
+                        <div class="swiper-slide g-padding-x-130--sm g-padding-x-150--lg">
+                            <div class="g-padding-x-20--xs g-padding-x-50--lg">
+                                <img class="g-width-70--xs g-height-70--xs g-hor-border-4__solid--white g-box-shadow__dark-lightest-v4 g-radius--circle g-margin-b-30--xs"
+                                     src="{{ member.avatar.url }}"
+                                     alt="{{ member.user.first_name }} {{ member.user.last_name }}">
+                                <div class="g-margin-b-40--xs">
+                                    <p class="g-font-size-22--xs g-font-size-28--sm g-color--heading">
+                                        <i>"{{ member.status }}"</i></p>
+                                </div>
+                                <div class="center-block g-hor-divider__solid--heading-light g-width-100--xs g-margin-b-30--xs"></div>
+                                <h4 class="g-font-size-15--xs g-font-size-18--sm g-color--primary g-margin-b-5--xs">{{ member.user.first_name }} {{ member.user.last_name }}/ {{ member.function }}</h4>
                             </div>
-                            <div class="center-block g-hor-divider__solid--heading-light g-width-100--xs g-margin-b-30--xs"></div>
-                            <h4 class="g-font-size-15--xs g-font-size-18--sm g-color--primary g-margin-b-5--xs">{{ member.user.first_name }} {{ member.user.last_name }}/ {{ member.function }}</h4>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
 
 

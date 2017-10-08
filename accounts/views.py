@@ -6,15 +6,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
+from django.core.paginator import Paginator, EmptyPage
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageForm, NewsForm
+from accounts.forms import ConnexionForm, RegistrationForm, MemberForm, ImageForm, NewsForm, DocumentForm
 from blog.models import News
 from ctf.models import ExternalCTF
 from events.models import Event
 from home.models import Visitor
 from home.views import home
+from library.models import DocumentCategroie, Document
 from members.models import FakeUser, Member, Position
 from django.utils import timezone
 
@@ -273,3 +276,53 @@ def generate_email(name, username):
     regards = "<p>AllSafe Team</p> <br><p>Regards,</p>"
     email_body = greetings + body + link + auth + regards
     return email_body
+
+
+@login_required
+def library(request, page=1):
+
+    search = request.GET.get("search", None)
+    tags = DocumentCategroie.objects.all()
+    if search:
+        documents_all = Document.objects.filter(Q(title__icontains=search) | Q(description__icontains=search)).order_by('-upload_date')
+    else:
+        documents_all = Document.objects.order_by('-upload_date')
+
+    paginator = Paginator(documents_all, 9)
+
+    try:
+        documents = paginator.page(page)
+    except EmptyPage:
+        documents = paginator.page(1)
+
+    return render(request, "accounts/library.html", locals())
+
+
+@login_required
+def upload_document(request):
+
+    document_form = DocumentForm(request.POST or None, request.FILES)
+    post = False
+    done = False
+    if request.POST and request.FILES:
+        post = True
+        if document_form.is_valid():
+            title = document_form.cleaned_data["title"]
+            description = document_form.cleaned_data["description"]
+            cover_pic = document_form.cleaned_data["cover_pic"]
+            file = document_form.cleaned_data["document_file"]
+            tags = document_form.cleaned_data["tags"]
+
+            new_doc = Document()
+            new_doc.uploader = request.user.member
+            new_doc.title = title
+            new_doc.description = description
+            new_doc.save()
+            new_doc.tags = tags
+            new_doc.cover_pic = cover_pic
+            new_doc.document_file = file
+            new_doc.save()
+            done = True
+
+    return render(request, "accounts/upload_document.html", locals())
+

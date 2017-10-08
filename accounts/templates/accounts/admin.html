@@ -268,7 +268,7 @@
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-home"></i> Dashboard </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li class="active">
+                                <li>
                                     <a href="/accounts/dashboard">
                                         <i class="icon-bar-chart"></i> Home </a>
                                 </li>
@@ -281,7 +281,7 @@
                                         <i class="icon-graph"></i> Hackers Chatroom </a>
                                 </li>
                                 {% if request.user.is_staff %}
-                                    <li>
+                                    <li class="active">
                                         <a href="/accounts/admin/">
                                             <i class="icon-graph"></i> <strong>Administration</strong></a>
                                     </li>
@@ -293,17 +293,13 @@
                             <a href="javascript:;" class="text-uppercase">
                                 <i class="icon-puzzle"></i> Library </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Resouces </a>
+                                  <li>
+                                    <a href="/accounts/library">
+                                        <i class="icon-docs"></i> Resources </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Upload File </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Search </a>
+                                    <a href="/accounts/library/upload">
+                                        <i class="icon-cloud-upload"></i> Upload File </a>
                                 </li>
                             </ul>
                         </li>

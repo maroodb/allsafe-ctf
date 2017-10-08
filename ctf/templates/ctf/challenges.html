@@ -274,16 +274,12 @@
                                 <i class="icon-puzzle"></i> Library </a>
                             <ul class="dropdown-menu dropdown-menu-fw">
                                 <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Resouces </a>
+                                    <a href="/accounts/library">
+                                        <i class="icon-docs"></i> Resources </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Upload File </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-graph"></i> Search </a>
+                                    <a href="/accounts/library/upload">
+                                        <i class="icon-cloud-upload"></i> Upload File </a>
                                 </li>
                             </ul>
                         </li>
@@ -515,7 +511,7 @@
                         <h4><span class="fa fa-file">&nbsp;</span><strong>{{ ch.name}}</strong> ({{ ch.points }}PT)</h4>
                     </div>
                     <div class="modal-body" style="padding:20px 20px;">
-                        <a href="{{ ch.file.url }}" class="cbp-l-caption-buttonRight btn red uppercase btn red uppercase btn-lg"><i class="fa fa-external-link">&nbsp;</i>Download
+                        <a href="{{ ch.file.url }}"  class="cbp-l-caption-buttonRight btn red uppercase btn red uppercase btn-lg"><i class="fa fa-external-link">&nbsp;</i>Download
                             Challenge File
                         </a>
                         <form role="form" enctype="multipart/form-data" method="POST" action="/ctf/submit/{{ ch.pk }}">
