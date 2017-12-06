@@ -95,8 +95,23 @@ def about(request):
 
 
 def fcee7ch1(request):
+
+    if request.POST:
+        post = True
+        flag = request.POST.get("flag", None)
+        if flag == "welcome_to_allsafe":
+            result = True
+        else:
+            result = False
     return render(request, "home/fcee7ch1.html", locals())
 
 
 def fcee7ch2(request):
+    if request.POST:
+        post = True
+        flag = request.POST.get("flag", None)
+        if flag == "nicejob":
+            result = True
+        else:
+            result = False
     return render(request, "home/fcee7ch2.html", locals())
