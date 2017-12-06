@@ -20,6 +20,7 @@ from allsafe import settings
 from django.contrib.sitemaps.views import sitemap
 
 from allsafe.sitemap import StaticViewSitemap
+from home.views import fcee7ch1, fcee7ch2
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -27,6 +28,8 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^fcee7/ch1', fcee7ch1),
+    url(r'^fcee7/ch2', fcee7ch2),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^blog/', include('blog.urls')),
     url(r'^projects/', include('projects.urls')),

@@ -92,3 +92,11 @@ def feedback(request):
 
 def about(request):
     return render(request, "home/about.html", locals())
+
+
+def fcee7ch1(request):
+    return render(request, "home/fcee7ch1.html", locals())
+
+
+def fcee7ch2(request):
+    return render(request, "home/fcee7ch2.html", locals())
