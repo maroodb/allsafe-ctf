@@ -93,6 +93,18 @@ EMAIL_HOST_USER = 'contact@allsafeclub.info'
 EMAIL_HOST_PASSWORD = 'kaja2012'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'contact@allsafeclub.info'
+
+
+
+
+    'defaultp': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'allsafe',
+        'USER': 'allsafeuser',
+        'PASSWORD': 'whacker',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 """
 
 EMAIL_HOST = 'smtp.zoho.com'
@@ -105,17 +117,9 @@ DEFAULT_FROM_EMAIL = 'AllSafe Team <contact@allsafeclub.info>'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'defaultp': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'allsafe',
-        'USER': 'allsafeuser',
-        'PASSWORD': 'whacker',
-        'HOST': 'localhost',
-        'PORT': '',
     }
 }
 
